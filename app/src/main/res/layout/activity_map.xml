@@ -10,5 +10,45 @@
         android:layout_height="match_parent">
 
     </com.amap.api.maps.MapView>
+    <LinearLayout
+        android:id="@+id/ll_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/byCar"
+            android:layout_height="wrap_content"
+            android:text="驾车"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/byBus"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="公交"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/byFoot"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="步行"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/byBike"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="骑行"
+            android:gravity="center"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#000000"
+        android:layout_marginTop="40dp"/>
 
 </FrameLayout>
