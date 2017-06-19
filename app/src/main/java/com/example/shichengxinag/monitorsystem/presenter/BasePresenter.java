@@ -2,6 +2,8 @@ package com.example.shichengxinag.monitorsystem.presenter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 /**
  * Created by Administrator on 2017/6/17/017.
@@ -9,14 +11,26 @@ import android.content.Context;
 
 public abstract class BasePresenter<T> {
     public T mView;
-    public Context mContext;
+    public Activity mContext;
 
     public BasePresenter(T view) {
         this.mView = view;
-        if(view instanceof Activity)
-            mContext= ((Activity) view).getApplicationContext();
+        if (view instanceof Activity)
+            mContext = (Activity) view;
     }
-    public void onDestory(){
-        mView=null;
+
+    public void onDestory() {
+        mView = null;
+        mContext = null;
+    }
+
+    public boolean isNetConnected() {
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) mContext
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+        if (mNetworkInfo != null) {
+            return mNetworkInfo.isAvailable();
+        }
+        return false;
     }
 }

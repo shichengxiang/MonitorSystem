@@ -1,8 +1,6 @@
 package com.example.shichengxinag.monitorsystem.nets;
 
-import com.example.shichengxinag.monitorsystem.view.BaseView;
-
-import retrofit2.Callback;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 
 /**
@@ -20,6 +18,6 @@ public class x {
         return mRetrofit.create(Api.class);
     }
     public interface Api{
-        Callback<String> login();
+        Call<String> login(String name, String pwd);
     }
 }
