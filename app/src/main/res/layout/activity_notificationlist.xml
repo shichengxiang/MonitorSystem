@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/bg">
+
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		style="@style/MyToolBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:fitsSystemWindows="true"
+		android:minHeight="?attr/actionBarSize">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:text="通知"
+			android:padding="@dimen/dp10"
+			android:textColor="@color/white"/>
+	</android.support.v7.widget.Toolbar>
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/ic_arrow_drop_down_black_24dp"
+		android:layout_below="@id/toolbar"
+		android:layout_centerHorizontal="true"/>
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	</FrameLayout>
+</RelativeLayout>

@@ -1,7 +1,11 @@
 package com.example.shichengxinag.monitorsystem.nets;
 
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.http.GET;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by shichengxinag on 2017/6/19.
@@ -18,6 +22,7 @@ public class x {
         return mRetrofit.create(Api.class);
     }
     public interface Api{
-        Call<String> login(String name, String pwd);
+        @GET("/account/first.htm")
+        Call<String> login(@QueryMap Map<String,String> params);
     }
 }

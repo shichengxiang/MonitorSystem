@@ -1,5 +1,6 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -35,5 +36,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     void toast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+    }
+    <T> void startActivity(Class<T> clz){
+        startActivity(new Intent(this,clz));
     }
 }

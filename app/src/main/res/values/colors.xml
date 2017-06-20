@@ -6,4 +6,6 @@
 
     <color name="white">#ffffff</color>
     <color name="transprent">#00000000</color>
+    <color name="bg">#FF6D9F94</color>
+    <color name="lineBG">#c4c4c4</color>
 </resources>

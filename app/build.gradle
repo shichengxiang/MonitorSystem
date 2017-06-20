@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.example.shichengxinag.monitorsystem"
         minSdkVersion 15
@@ -39,4 +39,5 @@ dependencies {
     compile 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.github.szugyi:Android-CircleMenu:2.0.0'
 }
