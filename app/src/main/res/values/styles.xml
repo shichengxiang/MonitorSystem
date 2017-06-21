@@ -29,12 +29,14 @@
 		<item name="android:windowEnterAnimation">@anim/pop_enter</item>
 		<item name="android:windowExitAnimation">@anim/pop_exit</item>
 	</style>
+
 	<style name="txt_table_title">
 		<item name="android:textColor">@color/txt_color</item>
 		<item name="android:gravity">center_horizontal</item>
 		<item name="android:textSize">@dimen/dp16</item>
 		<item name="android:padding">@dimen/dp15</item>
 	</style>
+
 	<style name="txt_table_content">
 		<item name="android:textColor">@color/txt_color2</item>
 		<item name="android:gravity">center_horizontal</item>

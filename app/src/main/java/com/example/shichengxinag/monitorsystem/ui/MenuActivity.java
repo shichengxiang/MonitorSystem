@@ -1,15 +1,13 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
-import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.ui.notification.NotificationListActivity;
+import com.example.shichengxinag.monitorsystem.ui.tables.TableActivity;
 import com.szugyi.circlemenu.view.CircleLayout;
 
 import butterknife.BindView;
@@ -51,13 +49,16 @@ public class MenuActivity extends BaseActivity {
             public void onItemClick(View view) {
                 switch (view.getId()) {
                     case R.id.toMonitor:
+                        startActivity(MapActivity.class);
                         break;
                     case R.id.toNotifications:
                         startActivity(NotificationListActivity.class);
                         break;
                     case R.id.toSafeGuard:
+                        startActivity(TableActivity.class);
                         break;
                     case R.id.toCenter:
+                        startActivity(CenterActivity.class);
                         break;
                 }
 
