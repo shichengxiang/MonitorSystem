@@ -1,5 +1,6 @@
 package com.example.shichengxinag.monitorsystem.nets;
 
+import com.example.shichengxinag.monitorsystem.entities.Result;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ import retrofit2.Converter;
  * Created by Administrator on 2017/6/19/019.
  */
 
-public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
+public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, Result<T>> {
     private final Gson mGson;
     private final Type mType;
 
@@ -22,19 +23,12 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody, T> 
     }
 
     @Override
-    public T convert(ResponseBody value) throws IOException {
+    public Result<T> convert(ResponseBody value) throws IOException {
         String response = value.string();
         try {
-            ResultResponse resultResponse = mGson.fromJson(response, ResultResponse.class);
-            if (resultResponse.getSuccess()) {
-                return mGson.fromJson(resultResponse.getResult(), mType);
-            } else {
-
-            }
+            return mGson.fromJson(response, mType);
         } finally {
 
         }
-
-        return null;
     }
 }

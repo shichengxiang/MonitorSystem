@@ -22,7 +22,8 @@
 			android:textColor="@color/white"/>
 	</android.support.v7.widget.Toolbar>
 	<ImageView
-		android:layout_width="24dp"
+		android:id="@+id/iv_pull"
+		android:layout_width="30dp"
 		android:layout_height="24dp"
 		android:src="@drawable/ic_arrow_drop_down_black_24dp"
 		android:layout_below="@id/toolbar"

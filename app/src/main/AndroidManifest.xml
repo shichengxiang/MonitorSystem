@@ -39,15 +39,16 @@
 		<activity android:name=".ui.LoginActivity">
 		</activity>
 		<activity android:name=".ui.MenuActivity">
-		</activity>
-		<activity android:name=".ui.notification.NotificationListActivity">
-		</activity>
-		<activity android:name=".ui.tables.TableActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
+		</activity>
+		<activity android:name=".ui.notification.NotificationListActivity"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity android:name=".ui.tables.TableActivity">
 		</activity>
 	</application>
 

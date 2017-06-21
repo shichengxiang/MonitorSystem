@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,9 +15,9 @@ import android.widget.PopupWindow;
 
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.ui.BaseActivity;
-import com.example.shichengxinag.monitorsystem.utils.DialogUtils;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by shichengxinag on 2017/6/20.
@@ -74,15 +73,34 @@ public class NotificationListActivity extends BaseActivity{
         if (!mPopupWindow.isShowing())
             mPopupWindow.showAsDropDown(toolbar);
     }
+    @OnClick({R.id.iv_pull})
+    public void onClickEvent(View view){
+        switch (view.getId()){
+            case R.id.iv_pull:
+                displayPopWindow();
+                break;
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+
     class MyGestureListener extends SimpleOnGestureListener{
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            Log.d("===",""+e1.getY());
+            Log.d("===",""+e2.getY());
+            if(0-distanceY>15*getResources().getDisplayMetrics().density){
+                displayPopWindow();
+                return true;
+            }
             return super.onScroll(e1, e2, distanceX, distanceY);
         }
-
         @Override
         public boolean onDown(MotionEvent e) {
-            Log.d("===",e.getY()+"位置");
             return super.onDown(e);
         }
     }

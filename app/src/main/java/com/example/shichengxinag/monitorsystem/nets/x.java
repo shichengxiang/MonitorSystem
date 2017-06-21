@@ -1,5 +1,8 @@
 package com.example.shichengxinag.monitorsystem.nets;
 
+import com.example.shichengxinag.monitorsystem.BuildConfig;
+import com.example.shichengxinag.monitorsystem.entities.Result;
+
 import java.util.Map;
 
 import retrofit2.Call;
@@ -14,15 +17,17 @@ import retrofit2.http.QueryMap;
 public class x {
     private static Retrofit mRetrofit;
 
-    public static Api http(){
-        if(mRetrofit==null)
-            mRetrofit=new Retrofit.Builder()
-                    .baseUrl("")
+    public static Api http() {
+        if (mRetrofit == null)
+            mRetrofit = new Retrofit.Builder()
+                    .baseUrl(BuildConfig.base_url)
+                    .addConverterFactory(new MyConverterFactory())
                     .build();
         return mRetrofit.create(Api.class);
     }
-    public interface Api{
+
+    public interface Api {
         @GET("/account/first.htm")
-        Call<String> login(@QueryMap Map<String,String> params);
+        Call<Result<String>> login(@QueryMap Map<String, String> params);
     }
 }

@@ -3,6 +3,7 @@ package com.example.shichengxinag.monitorsystem.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -39,5 +40,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     <T> void startActivity(Class<T> clz){
         startActivity(new Intent(this,clz));
+    }
+    void displayLoading(){
+//        AlertDialog.Builder(this);
     }
 }

@@ -88,5 +88,10 @@
 		android:textColor="@color/white"
 		android:gravity="center"
 		android:background="@drawable/shape_circle_small"/>
+	<com.example.shichengxinag.monitorsystem.customes.WaveView
+		android:layout_width="@dimen/dp30"
+		android:layout_height="@dimen/dp30"
+		android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
