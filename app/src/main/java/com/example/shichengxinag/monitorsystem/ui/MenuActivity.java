@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.shichengxinag.monitorsystem.R;
+import com.example.shichengxinag.monitorsystem.customes.CircleLayout;
 import com.example.shichengxinag.monitorsystem.ui.notification.NotificationListActivity;
 import com.example.shichengxinag.monitorsystem.ui.tables.TableActivity;
-import com.szugyi.circlemenu.view.CircleLayout;
 
 import butterknife.BindView;
 

@@ -6,6 +6,7 @@
 
     <color name="white">#ffffff</color>
     <color name="transprent">#00000000</color>
+	<color name="halftransprent">#44000000</color>
     <color name="bg">#FF6D9F94</color>
     <color name="lineBG">#c4c4c4</color>
     <color name="table_title_bg">#FF9F9C9C</color>

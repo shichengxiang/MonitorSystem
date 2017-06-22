@@ -1,11 +1,16 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.widget.Toast;
+
+import com.example.shichengxinag.monitorsystem.R;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -17,6 +22,8 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     Unbinder bind;
+    private AlertDialog mLoadingDialog;
+    private Activity ac;
 
     public abstract int getLayout();
 
@@ -26,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        ac=this;
         bind = ButterKnife.bind(this);
         init(savedInstanceState);
     }
@@ -34,14 +42,38 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         bind.unbind();
+        if (mLoadingDialog != null)
+            mLoadingDialog.dismiss();
     }
-    void toast(String msg){
-        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+
+    void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
-    <T> void startActivity(Class<T> clz){
-        startActivity(new Intent(this,clz));
+
+    <T> void startActivity(final Class<T> clz) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(ac, clz));
+            }
+        }, 400);
     }
-    void displayLoading(){
-//        AlertDialog.Builder(this);
+
+    void displayLoading() {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new AlertDialog.Builder(this, R.style.DialogWrap)
+                    .setView(R.layout.layout_loading)
+                    .setCancelable(true)
+                    .create();
+            mLoadingDialog.getWindow().setGravity(Gravity.CENTER);
+//            mLoadingDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        if (!mLoadingDialog.isShowing())
+            mLoadingDialog.show();
+    }
+
+    void dismissLoading() {
+        if (mLoadingDialog != null)
+            mLoadingDialog.dismiss();
     }
 }

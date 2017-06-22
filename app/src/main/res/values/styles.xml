@@ -21,13 +21,30 @@
 
 	<style name="MyToolBar" parent="Base.Widget.AppCompat.Toolbar">
 		<item name="contentInsetStart">0dp</item>
-		<item name="android:background">@color/colorPrimary</item>
+		<!--<item name="android:background">@color/colorPrimary</item>-->
 	</style>
 
 
 	<style name="popwindow_anim">
 		<item name="android:windowEnterAnimation">@anim/pop_enter</item>
 		<item name="android:windowExitAnimation">@anim/pop_exit</item>
+	</style>
+	<style name="dialog_anim">
+		<item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+		<item name="android:windowExitAnimation">@anim/dialog_exit</item>
+	</style>
+	<style name="DialogWrap">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:background">@drawable/bg_white_radius2</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowFrame">@null</item>
+		<item name="android:windowIsFloating">true</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowAnimationStyle">@style/dialog_anim</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:backgroundDimEnabled">true</item>
+		<item name="android:backgroundDimAmount">0.6</item>
 	</style>
 
 	<style name="txt_table_title">

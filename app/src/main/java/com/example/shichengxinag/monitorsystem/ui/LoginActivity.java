@@ -1,6 +1,7 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
 
@@ -15,7 +16,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/6/19/019.
  */
 
-public class LoginActivity extends BaseActivity implements AccountView{
+public class LoginActivity extends BaseActivity implements AccountView {
 
     @BindView(R.id.nameWrapper)
     TextInputLayout ril_name;
@@ -31,12 +32,13 @@ public class LoginActivity extends BaseActivity implements AccountView{
 
     @Override
     public void init(Bundle savedInstanceState) {
-        mPresenter=new AccountPresenter(this);
+        mPresenter = new AccountPresenter(this);
 
     }
+
     @OnClick({R.id.toLogin})
-    public void onClickEvent(View view){
-        switch (view.getId()){
+    public void onClickEvent(View view) {
+        switch (view.getId()) {
             case R.id.toLogin:
                 startActivity(MenuActivity.class);
                 break;
