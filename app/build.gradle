@@ -40,4 +40,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.github.szugyi:Android-CircleMenu:2.0.0'
+    //底部导航
+    compile 'com.github.armcha:LuseenBottomNavigation:1.8.2'
 }

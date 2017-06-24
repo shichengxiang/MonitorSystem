@@ -1,6 +1,5 @@
 package com.example.shichengxinag.monitorsystem.fragment;
 
-import android.icu.util.IndianCalendar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,7 +29,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(getLayout(),container,false);
         binder = ButterKnife.bind(getActivity(), root);
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return root;
     }
 
     @Override
