@@ -2,7 +2,9 @@ package com.example.shichengxinag.monitorsystem.ui;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -16,27 +18,24 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
- * Created by Administrator on 2017/6/26/026.
+ * Created by Administrator on 2017/6/27/027.
  */
 
-public class MainActivity extends BaseActivity {
-    @BindView(R.id.nav)
+public class Main2Activity extends FragmentActivity {
     BottomBar mBottomBar;
-    @BindView(R.id.viewPager)
     ViewPager mViewPager;
-
     @Override
-    public int getLayout() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    public void init(Bundle savedInstanceState) {
-//        initTab();
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initTab();
     }
     private void initTab(){
+        mBottomBar= (BottomBar) findViewById(R.id.nav);
+        mViewPager= (ViewPager) findViewById(R.id.viewPager);
         mViewPager.setAdapter(new TabFragmentsAdapter(getSupportFragmentManager()));
         mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -62,7 +61,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                mBottomBar.setDefaultTab(position);
+                mBottomBar.setDefaultTab(R.id.tab_mine);
             }
 
             @Override
@@ -71,7 +70,6 @@ public class MainActivity extends BaseActivity {
             }
         });
     }
-
     class TabFragmentsAdapter extends FragmentPagerAdapter {
 
         public TabFragmentsAdapter(FragmentManager fm) {
@@ -103,5 +101,4 @@ public class MainActivity extends BaseActivity {
             return 4;
         }
     }
-
 }

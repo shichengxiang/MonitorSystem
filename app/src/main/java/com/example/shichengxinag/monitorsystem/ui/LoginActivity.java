@@ -1,8 +1,8 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
+import android.util.Log;
 import android.view.View;
 
 import com.example.shichengxinag.monitorsystem.R;
@@ -33,7 +33,7 @@ public class LoginActivity extends BaseActivity implements AccountView {
     @Override
     public void init(Bundle savedInstanceState) {
         mPresenter = new AccountPresenter(this);
-
+        Log.d("==",ril_name.getEditText().getText().toString());
     }
 
     @OnClick({R.id.toLogin})

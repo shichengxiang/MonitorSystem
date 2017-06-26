@@ -28,22 +28,10 @@
 
             <!-- 高德地图key -->
         </meta-data>
-        <activity android:name=".ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
 
         <activity android:name=".ui.MapActivity">
         </activity>
         <activity android:name=".ui.LoginActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
         </activity>
         <activity android:name=".ui.MenuActivity">
         </activity>
@@ -56,6 +44,15 @@
         <activity android:name=".ui.CenterActivity"
             android:screenOrientation="portrait">
 
+        </activity>
+        <activity android:name=".ui.MainActivity">
+        </activity>
+        <activity android:name=".ui.Main2Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

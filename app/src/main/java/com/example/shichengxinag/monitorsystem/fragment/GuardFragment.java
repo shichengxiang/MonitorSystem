@@ -1,5 +1,7 @@
 package com.example.shichengxinag.monitorsystem.fragment;
 
+import android.os.Bundle;
+
 import com.example.shichengxinag.monitorsystem.R;
 
 /**
@@ -10,5 +12,10 @@ public class GuardFragment extends BaseFragment {
     @Override
     public int getLayout() {
         return R.layout.fragment_guard;
+    }
+
+    @Override
+    public void init(Bundle savedInstanceState) {
+
     }
 }

@@ -19,6 +19,7 @@ public abstract class BaseFragment extends Fragment {
     Unbinder binder;
 
     public abstract int getLayout();
+    public abstract void init(Bundle savedInstanceState);
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root=inflater.inflate(getLayout(),container,false);
-        binder = ButterKnife.bind(getActivity(), root);
+        binder = ButterKnife.bind(this, root);
+        init(savedInstanceState);
         return root;
     }
 
