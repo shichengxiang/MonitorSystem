@@ -1,6 +1,7 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,8 +13,8 @@ import com.example.shichengxinag.monitorsystem.fragment.GuardFragment;
 import com.example.shichengxinag.monitorsystem.fragment.MapFragent;
 import com.example.shichengxinag.monitorsystem.fragment.MineFrament;
 import com.example.shichengxinag.monitorsystem.fragment.SearchFrament;
-import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationItem;
-import com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationView;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
 import butterknife.BindView;
 
@@ -24,8 +25,8 @@ import butterknife.BindView;
 public class MainActivity extends BaseActivity {
 
     @Nullable
-    @BindView(R.id.bottomNavigation)
-    BottomNavigationView mBottomNavigationView;
+    @BindView(R.id.bottomBar)
+    BottomBar mBottomBar;
     @Nullable
     @BindView(R.id.mViewPager)
     ViewPager mViewPager;
@@ -41,8 +42,6 @@ public class MainActivity extends BaseActivity {
 
     }
     private void initBottom(){
-        mBottomNavigationView.addTab(new BottomNavigationItem("地图",R.color.colorAccent,R.drawable.ic_map));
-        mBottomNavigationView.addTab(new BottomNavigationItem("我的",R.color.colorAccent,R.drawable.ic_me));
         mViewPager.setAdapter(new TabFramentsPageAdapter(getSupportFragmentManager()));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -52,7 +51,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-
+                mBottomBar.setDefaultTab(position);
             }
 
             @Override
@@ -60,7 +59,26 @@ public class MainActivity extends BaseActivity {
 
             }
         });
-        mBottomNavigationView.setUpWithViewPager(mViewPager,new int[]{R.color.blue,R.color.colorAccent,R.color.bg,R.color.colorPrimaryDark},new int[]{R.drawable.ic_map,R.drawable.ic_me,R.drawable.ic_guard,R.drawable.ic_search});
+        mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                switch (tabId){
+                    case R.id.tab_map:
+                        mViewPager.setCurrentItem(0);
+                        break;
+                    case R.id.tab_guard:
+                        mViewPager.setCurrentItem(1);
+                        break;
+                    case R.id.tab_search:
+                        mViewPager.setCurrentItem(2);
+                        break;
+                    case R.id.tab_mine:
+                        mViewPager.setCurrentItem(3);
+                        break;
+                }
+            }
+        });
+//        mBottomBar.setUpWithViewPager(mViewPager,new int[]{R.color.blue,R.color.colorAccent,R.color.bg,R.color.colorPrimaryDark},new int[]{R.drawable.ic_map,R.drawable.ic_me,R.drawable.ic_guard,R.drawable.ic_search});
     }
     class TabFramentsPageAdapter extends FragmentPagerAdapter{
 

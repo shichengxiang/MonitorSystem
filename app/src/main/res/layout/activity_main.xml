@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <com.luseen.luseenbottomnavigation.BottomNavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        app:bnv_shadow="false"/>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+				xmlns:app="http://schemas.android.com/apk/res-auto"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent">
 
-    </android.support.v4.view.ViewPager>
+	<android.support.v4.view.ViewPager
+		android:id="@+id/mViewPager"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_above="@+id/bottomBar"
+		android:background="@color/white">
+
+	</android.support.v4.view.ViewPager>
+
+	<com.roughike.bottombar.BottomBar
+		android:id="@+id/bottomBar"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/dp60"
+		android:layout_alignParentBottom="true"
+		app:bb_tabXmlResource="@xml/bottom"/>
 </RelativeLayout>
