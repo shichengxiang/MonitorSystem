@@ -40,17 +40,7 @@ public class Main2Activity extends FragmentActivity {
         mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                int position=0;
-                if (tabId==R.id.tab_map){
-                    position=0;
-                }else if(tabId==R.id.tab_guard){
-                    position=1;
-                }else if(tabId==R.id.tab_search){
-                    position=2;
-                }else{
-                    position=3;
-                }
-                mViewPager.setCurrentItem(position);
+                mViewPager.setCurrentItem(getPositionById(tabId));
             }
         });
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -61,7 +51,7 @@ public class Main2Activity extends FragmentActivity {
 
             @Override
             public void onPageSelected(int position) {
-                mBottomBar.setDefaultTab(R.id.tab_mine);
+                mBottomBar.setDefaultTab(getIdByPosition(position));
             }
 
             @Override
@@ -100,5 +90,31 @@ public class Main2Activity extends FragmentActivity {
         public int getCount() {
             return 4;
         }
+    }
+    private int getIdByPosition(int p){
+        int result=0;
+        if(p==0){
+            result=R.id.tab_map;
+        }else if(p==1){
+            result=R.id.tab_guard;
+        }else if(p==2){
+            result=R.id.tab_search;
+        }else {
+            result =R.id.tab_mine;
+        }
+        return result;
+    }
+    private int getPositionById(int id){
+        int position=0;
+        if (id==R.id.tab_map){
+            position=0;
+        }else if(id==R.id.tab_guard){
+            position=1;
+        }else if(id==R.id.tab_search){
+            position=2;
+        }else{
+            position=3;
+        }
+        return position;
     }
 }

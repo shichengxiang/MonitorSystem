@@ -11,13 +11,17 @@
     android:fillViewport="true">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp100"
-            android:background="@color/bg">
+            android:background="@color/white">
         </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:background="@color/lineBG"/>
         <GridView
             android:id="@+id/gridView"
             android:layout_width="match_parent"
@@ -28,6 +32,10 @@
             android:background="@color/lineBG">
 
         </GridView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:background="@color/lineBG"/>
 
     </LinearLayout>
 

@@ -33,14 +33,16 @@ public class LoginActivity extends BaseActivity implements AccountView {
     @Override
     public void init(Bundle savedInstanceState) {
         mPresenter = new AccountPresenter(this);
-        Log.d("==",ril_name.getEditText().getText().toString());
     }
 
-    @OnClick({R.id.toLogin})
+    @OnClick({R.id.toLogin,R.id.toMain})
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.toLogin:
                 startActivity(MenuActivity.class);
+                break;
+            case R.id.toMain:
+                startActivity(Main2Activity.class);
                 break;
         }
     }
