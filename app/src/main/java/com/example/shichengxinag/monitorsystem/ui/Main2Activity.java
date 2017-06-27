@@ -59,6 +59,7 @@ public class Main2Activity extends FragmentActivity {
 
             }
         });
+        mViewPager.setOffscreenPageLimit(0);
     }
     class TabFragmentsAdapter extends FragmentPagerAdapter {
 
