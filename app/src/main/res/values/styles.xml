@@ -29,6 +29,10 @@
 		<item name="android:windowEnterAnimation">@anim/pop_enter</item>
 		<item name="android:windowExitAnimation">@anim/pop_exit</item>
 	</style>
+	<style name="popwindow_anim_left">
+		<item name="android:windowEnterAnimation">@anim/pop_enter_left</item>
+		<item name="android:windowExitAnimation">@anim/pop_exit_right</item>
+	</style>
 	<style name="dialog_anim">
 		<item name="android:windowEnterAnimation">@anim/dialog_enter</item>
 		<item name="android:windowExitAnimation">@anim/dialog_exit</item>
