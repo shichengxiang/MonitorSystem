@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+	<color name="colorPrimary">#3F51B5</color>
+	<color name="colorPrimaryDark">#303F9F</color>
+	<color name="colorAccent">#FF4081</color>
 
-    <color name="white">#ffffff</color>
-    <color name="transprent">#00000000</color>
+	<color name="white">#ffffff</color>
+	<color name="transprent">#00000000</color>
 	<color name="halftransprent">#44000000</color>
-    <color name="bg">#E6E6E6</color>
-    <color name="lineBG">#FFEDE5E5</color>
-    <color name="table_title_bg">#FF9F9C9C</color>
-    <color name="txt_color">#FF1A1919</color>
-    <color name="txt_color2">#FF2D2C2C</color>
-    <color name="blue">#FF0F64D2</color>
+	<color name="bg">#E6E6E6</color>
+	<color name="lineBG">#FFEDE5E5</color>
+	<color name="table_title_bg">#FF9F9C9C</color>
+	<color name="txt_color">#FF1A1919</color>
+	<color name="txt_color2">#FF2D2C2C</color>
+	<color name="green">#FF0EBC08</color>
+	<color name="grey">#ebebeb</color>
+	<color name="black">#000000</color>
+	<color name="darkgrey">#999999</color>
+	<color name="red">#FF0000</color>
+	<color name="blue">#4c90f9</color>
+	<color name="gary">#898989</color>
+	<color name="gray_lite">#c5c5c5</color>
+	<color name="phone_bg">#f6f6f6</color>
+	<color name="transparent">#00000000</color>
+	<color name="itemlist">#f4f4f4</color>
+	<color name="watermark_hint">#ccffffff</color>
+	<color name="act_background">#efefef</color>
 </resources>

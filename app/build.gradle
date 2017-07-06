@@ -46,4 +46,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //图标
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    compile project(':PushSDK')
+    compile 'com.github.arimorty:floatingsearchview:2.0.3'
+
 }

@@ -1,8 +1,12 @@
 package com.example.shichengxinag.monitorsystem.presenter;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.location.Location;
 import android.os.Environment;
+import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.UiSettings;
@@ -10,9 +14,21 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.animation.AlphaAnimation;
 import com.amap.api.maps.model.animation.Animation;
 import com.amap.api.maps.model.animation.ScaleAnimation;
+import com.amap.api.navi.model.RouteOverlayOptions;
+import com.amap.api.navi.view.RouteOverLay;
+import com.amap.api.services.core.AMapException;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.route.BusRouteResult;
+import com.amap.api.services.route.DrivePath;
+import com.amap.api.services.route.DriveRouteResult;
+import com.amap.api.services.route.RideRouteResult;
+import com.amap.api.services.route.RouteSearch;
+import com.amap.api.services.route.WalkRouteResult;
 import com.example.shichengxinag.monitorsystem.nets.x;
+import com.example.shichengxinag.monitorsystem.utils.DialogUtils;
 import com.example.shichengxinag.monitorsystem.view.MapView;
 
 import java.io.FileNotFoundException;
@@ -26,10 +42,11 @@ import java.util.Date;
  * Created by Administrator on 2017/6/17/017.
  */
 
-public class MapPresenter extends BasePresenter<MapView> {
+public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLocationChangeListener, AMap.OnInfoWindowClickListener, RouteSearch.OnRouteSearchListener {
 
     MyLocationStyle myLocationStyle;
     AMap mAMap;
+    RouteSearch mRouteSearch;//线路导航
 
     public MapPresenter(MapView view) {
         super(view);
@@ -48,6 +65,8 @@ public class MapPresenter extends BasePresenter<MapView> {
         aMap.getUiSettings().setMyLocationButtonEnabled(true);
         aMap.setMyLocationStyle(myLocationStyle);
         aMap.setMyLocationEnabled(true);
+        aMap.setOnMyLocationChangeListener(this);
+        aMap.setOnInfoWindowClickListener(this);
     }
 
     /**
@@ -62,6 +81,15 @@ public class MapPresenter extends BasePresenter<MapView> {
         settings.setScaleControlsEnabled(true);//缩放
 //        initScreeShot(aMap);
         addMarkers(aMap);
+    }
+
+    public void routeNavigator(AMap aMap, LatLonPoint startP, LatLonPoint endP) {
+        mRouteSearch = new RouteSearch(mContext);
+        mRouteSearch.setRouteSearchListener(this);
+        RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(startP, endP);
+        RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo, RouteSearch.DRIVING_SINGLE_DEFAULT, null, null, "");
+        mRouteSearch.calculateDriveRouteAsyn(query);
+
     }
 
     /**
@@ -124,7 +152,38 @@ public class MapPresenter extends BasePresenter<MapView> {
         markerOptions.position(latLng)
                 .title("天安门水库")
                 .snippet("水位：正常\n水量：100");
-        aMap.addMarker(markerOptions);
+        final Marker mark = aMap.addMarker(markerOptions);
+        final AlphaAnimation ani = new AlphaAnimation(1f, 0.1f);
+        ani.setDuration(200);
+        final AlphaAnimation ani2 = new AlphaAnimation(0.1f, 1f);
+        ani2.setDuration(200);
+        ani.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart() {
+
+            }
+
+            @Override
+            public void onAnimationEnd() {
+                mark.setAnimation(ani2);
+                mark.startAnimation();
+            }
+        });
+        ani2.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart() {
+
+            }
+
+            @Override
+            public void onAnimationEnd() {
+                mark.setAnimation(ani);
+                mark.startAnimation();
+            }
+        });
+        mark.setAnimation(ani);
+        mark.startAnimation();
+
         //test
         LatLng l2 = new LatLng(31.035516, 112.199266);
         MarkerOptions opt = new MarkerOptions();
@@ -133,7 +192,7 @@ public class MapPresenter extends BasePresenter<MapView> {
                 .snippet("水位：正常\n水量：100");
         final Marker marker = aMap.addMarker(opt);
         //动画
-        ScaleAnimation animation = new ScaleAnimation(0.8f,1f,0.8f,1.0f);
+        ScaleAnimation animation = new ScaleAnimation(0.8f, 1f, 0.8f, 1.0f);
         long duration = 1000L;
         animation.setDuration(duration);
         animation.setInterpolator(new LinearInterpolator());
@@ -159,5 +218,40 @@ public class MapPresenter extends BasePresenter<MapView> {
 //                return false;
 //            }
 //        });
+    }
+
+    /**
+     * 获取定位经纬度
+     *
+     * @param location
+     */
+    @Override
+    public void onMyLocationChange(Location location) {
+        mView.onError("定位经纬度：" + location.getLongitude() + "  " + location.getLatitude());
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        mView.onError(marker.getTitle() + "被点击了");
+    }
+
+    @Override
+    public void onBusRouteSearched(BusRouteResult busRouteResult, int i) {
+
+    }
+
+    @Override
+    public void onDriveRouteSearched(DriveRouteResult result, int errorCode) {
+        mView.onSuccessDriveRoute(result,errorCode);
+    }
+
+    @Override
+    public void onWalkRouteSearched(WalkRouteResult walkRouteResult, int i) {
+
+    }
+
+    @Override
+    public void onRideRouteSearched(RideRouteResult rideRouteResult, int i) {
+
     }
 }

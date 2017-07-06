@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/rootView">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rootView">
 
     <com.amap.api.maps.MapView
         android:id="@+id/mapView"
@@ -32,17 +33,59 @@
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
+
+    <com.arlib.floatingsearchview.FloatingSearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:floatingSearch_searchBarMarginLeft="@dimen/dp15"
+        app:floatingSearch_searchBarMarginTop="@dimen/dp20"
+        app:floatingSearch_searchBarMarginRight="@dimen/dp15"
+        app:floatingSearch_searchHint="搜索"
+        app:floatingSearch_searchSuggestionTextSize="@dimen/dp10"
+        app:floatingSearch_suggestionsListAnimDuration="250"
+        app:floatingSearch_showSearchKey="false"
+        app:floatingSearch_leftActionMode="showHamburger"
+        app:floatingSearch_menu="@menu/menu_main"
+        app:floatingSearch_close_search_on_keyboard_dismiss="true"/>
+    <RelativeLayout
+        android:id="@+id/click_msg"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp30"
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp20"
+        android:background="@color/colorPrimaryDark">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_msg"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rect_count"
+            android:gravity="center"
+            android:text="22"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp8"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
     <TextView
-        android:id="@+id/tv_msg"
+        android:id="@+id/click_displayMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="67"
         android:background="@drawable/shape_circle_25"
         android:textColor="@color/white"
         android:textSize="@dimen/dp10"
-        android:layout_below="@id/toolbar"
+        android:text="..."
+        android:gravity="center"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/dp20"/>
+        android:layout_marginRight="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_below="@id/click_msg"/>
 
 
 

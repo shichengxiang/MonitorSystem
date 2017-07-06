@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import com.example.shichengxinag.monitorsystem.R;
+import com.umeng.message.PushAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -33,13 +34,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        initJPush();
         ac=this;
         bind = ButterKnife.bind(this);
         init(savedInstanceState);
     }
+    private void initJPush(){
+        PushAgent.getInstance(this).onAppStart();//友盟统计
+
+    }
 
     @Override
     protected void onDestroy() {
+
         super.onDestroy();
         bind.unbind();
         if (mLoadingDialog != null)
