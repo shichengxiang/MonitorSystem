@@ -1,12 +1,9 @@
 package com.example.shichengxinag.monitorsystem.presenter;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Environment;
-import android.view.View;
 import android.view.animation.LinearInterpolator;
-import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.UiSettings;
@@ -17,24 +14,18 @@ import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.animation.AlphaAnimation;
 import com.amap.api.maps.model.animation.Animation;
 import com.amap.api.maps.model.animation.ScaleAnimation;
-import com.amap.api.navi.model.RouteOverlayOptions;
-import com.amap.api.navi.view.RouteOverLay;
-import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.route.BusRouteResult;
-import com.amap.api.services.route.DrivePath;
 import com.amap.api.services.route.DriveRouteResult;
 import com.amap.api.services.route.RideRouteResult;
 import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkRouteResult;
-import com.example.shichengxinag.monitorsystem.nets.x;
-import com.example.shichengxinag.monitorsystem.utils.DialogUtils;
+import com.example.shichengxinag.monitorsystem.ui.MapActivity;
 import com.example.shichengxinag.monitorsystem.view.MapView;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.security.PublicKey;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -232,7 +223,8 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        mView.onError(marker.getTitle() + "被点击了");
+        mView.onError(marker.getSnippet());
+        mView.excuteMothed(MapActivity.DISPLAY_BOTTOM);
     }
 
     @Override
@@ -242,7 +234,7 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
 
     @Override
     public void onDriveRouteSearched(DriveRouteResult result, int errorCode) {
-        mView.onSuccessDriveRoute(result,errorCode);
+        mView.onSuccessDriveRoute(result, errorCode);
     }
 
     @Override

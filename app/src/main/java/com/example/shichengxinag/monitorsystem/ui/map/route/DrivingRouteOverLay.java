@@ -16,7 +16,7 @@ import com.amap.api.services.route.DrivePath;
 import com.amap.api.services.route.DriveStep;
 import com.amap.api.services.route.TMC;
 import com.example.shichengxinag.monitorsystem.R;
-import com.example.shichengxinag.monitorsystem.ui.map.route.util.AMapUtil;
+import com.example.shichengxinag.monitorsystem.ui.map.AMapUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -152,7 +152,8 @@ public class DrivingRouteOverLay extends RouteOverlay{
             return;
         }
         TMC segmentTrafficStatus;
-        addPolyLine(new PolylineOptions().add(startPoint,AMapUtil.convertToLatLng(tmcSection.get(0).getPolyline().get(0)))
+        addPolyLine(new PolylineOptions().add(startPoint, 
+        		AMapUtil.convertToLatLng(tmcSection.get(0).getPolyline().get(0)))
 				.setDottedLine(true));
         String status = "";
         for (int i = 0; i < tmcSection.size(); i++) {

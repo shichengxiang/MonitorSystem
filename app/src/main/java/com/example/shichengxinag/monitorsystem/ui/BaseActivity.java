@@ -66,7 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }, 400);
     }
 
-    void displayLoading() {
+    public void displayLoading() {
         if (mLoadingDialog == null) {
             mLoadingDialog = new AlertDialog.Builder(this, R.style.DialogWrap)
                     .setView(R.layout.layout_loading)
@@ -79,7 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             mLoadingDialog.show();
     }
 
-    void dismissLoading() {
+    public void dismissLoading() {
         if (mLoadingDialog != null)
             mLoadingDialog.dismiss();
     }

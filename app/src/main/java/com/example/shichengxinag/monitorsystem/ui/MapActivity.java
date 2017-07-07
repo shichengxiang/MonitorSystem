@@ -1,13 +1,12 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.audiofx.Visualizer;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.PopupWindow;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.route.DrivePath;
@@ -25,12 +23,10 @@ import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.presenter.MapPresenter;
+import com.example.shichengxinag.monitorsystem.ui.map.AMapUtil;
 import com.example.shichengxinag.monitorsystem.ui.map.route.DrivingRouteOverLay;
-import com.example.shichengxinag.monitorsystem.ui.map.route.util.AMapUtil;
 import com.example.shichengxinag.monitorsystem.ui.notification.NewsActivity;
-import com.example.shichengxinag.monitorsystem.ui.notification.NotificationListActivity;
 import com.example.shichengxinag.monitorsystem.ui.tables.TableActivity;
-import com.umeng.message.PushAgent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,6 +40,10 @@ import butterknife.OnClick;
 
 public class MapActivity extends BaseActivity implements com.example.shichengxinag.monitorsystem.view.MapView, View.OnClickListener {
 
+    private static boolean isMark = true;
+    public static final int DISPLAY_BOTTOM = 0x11;
+
+
     @BindView(R.id.mapView)
     MapView mMapView;
     @BindView(R.id.rootView)
@@ -51,6 +51,15 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     AMap mAMap;
     @BindView(R.id.searchView)
     FloatingSearchView mSearchView;
+
+
+    //    导航
+    @BindView(R.id.area_bottom_positiondetail)
+    View area_bottom_positiondetail;
+    @BindView(R.id.click_toNav)
+    View click_toNav;
+    @BindView(R.id.area_topNavType)
+    View area_topNavType;
 
     private LatLonPoint mStartPoint = new LatLonPoint(39.942295, 116.335891);//起点，116.335891,39.942295
     private LatLonPoint mEndPoint = new LatLonPoint(39.995576, 116.481288);//终点，116.481288,39.995576
@@ -103,7 +112,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
         mMapView.onResume();
     }
 
-    @OnClick({R.id.click_msg, R.id.click_displayMenu})
+    @OnClick({R.id.click_msg, R.id.click_displayMenu, R.id.click_toNav})
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.click_msg:
@@ -111,6 +120,9 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
                 break;
             case R.id.click_displayMenu:
                 displayMenuWindow();
+                break;
+            case R.id.click_toNav:
+                mMapPresenter.routeNavigator(mAMap, mStartPoint, mEndPoint);
                 break;
         }
     }
@@ -128,7 +140,6 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     }
 
     private void displayMenuWindow() {
-        mMapPresenter.routeNavigator(mAMap, mStartPoint, mEndPoint);
         if (menuWindow == null) {
             View view = LayoutInflater.from(this).inflate(R.layout.layout_menu, null);
             menuWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -191,6 +202,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
 //                    mRotueTimeDes.setText(des);
 //                    mRouteDetailDes.setVisibility(View.VISIBLE);
                     int taxiCost = (int) mDriveRouteResult.getTaxiCost();
+                    toast("时间：" + des + " 费用：" + taxiCost);
 //                    mRouteDetailDes.setText("打车约" + taxiCost + "元");
 //                    mBottomLayout.setOnClickListener(new View.OnClickListener() {
 //                        @Override
@@ -203,6 +215,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
 //                            startActivity(intent);
 //                        }
 //                    });
+                    displayTopNavType();
                 } else if (result != null && result.getPaths() == null) {
                     toast("无结果");
                 }
@@ -211,7 +224,14 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
 //                ToastUtil.show(mContext, R.string.no_result);
             }
         } else {
-            toast(errorCode+"");
+            toast(errorCode + "");
+        }
+    }
+
+    @Override
+    public void excuteMothed(int tag) {
+        if (tag == DISPLAY_BOTTOM) {
+            displayBottomPositionDetail();
         }
     }
 
@@ -237,5 +257,35 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
         public void writeToParcel(Parcel dest, int flags) {
 
         }
+    }
+
+    /**
+     * 导航底部显示
+     */
+    public void displayBottomPositionDetail() {
+        area_bottom_positiondetail.setVisibility(View.VISIBLE);
+    }
+
+    public void displayTopNavType() {
+        area_topNavType.setVisibility(View.VISIBLE);
+    }
+
+    private void reloadUI() {
+        area_bottom_positiondetail.setVisibility(View.GONE);
+        area_topNavType.setVisibility(View.GONE);
+        mAMap.reloadMap();
+        mMapPresenter.initMyLocation(mAMap);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (isMark)
+                return super.onKeyDown(keyCode, event);
+            else {
+                reloadUI();
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
