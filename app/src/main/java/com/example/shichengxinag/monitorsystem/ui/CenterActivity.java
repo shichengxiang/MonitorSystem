@@ -1,25 +1,19 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 
 import com.example.shichengxinag.monitorsystem.R;
-
-import org.w3c.dom.ls.LSException;
+import com.example.shichengxinag.monitorsystem.ui.guardlog.GuardListActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,5 +94,11 @@ public class CenterActivity extends BaseActivity {
             list.add(map);
         }
         mGridView.setAdapter(new SimpleAdapter(this, list, R.layout.item_grid_center, new String[]{"img", "id"}, new int[]{R.id.item_img, R.id.item_txt}));
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(GuardListActivity.class);
+            }
+        });
     }
 }

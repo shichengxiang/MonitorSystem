@@ -1,6 +1,7 @@
 package com.example.shichengxinag.monitorsystem.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,6 +25,9 @@ import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.presenter.MapPresenter;
 import com.example.shichengxinag.monitorsystem.ui.map.AMapUtil;
+import com.example.shichengxinag.monitorsystem.ui.map.mapapi.Location;
+import com.example.shichengxinag.monitorsystem.ui.map.mapapi.NativeDialog;
+import com.example.shichengxinag.monitorsystem.ui.map.route.DriveRouteDetailActivity;
 import com.example.shichengxinag.monitorsystem.ui.map.route.DrivingRouteOverLay;
 import com.example.shichengxinag.monitorsystem.ui.notification.NewsActivity;
 import com.example.shichengxinag.monitorsystem.ui.tables.TableActivity;
@@ -56,6 +60,8 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     //    导航
     @BindView(R.id.area_bottom_positiondetail)
     View area_bottom_positiondetail;
+    @BindView(R.id.click_displayRoute)
+    View click_displayRoute;
     @BindView(R.id.click_toNav)
     View click_toNav;
     @BindView(R.id.area_topNavType)
@@ -112,7 +118,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
         mMapView.onResume();
     }
 
-    @OnClick({R.id.click_msg, R.id.click_displayMenu, R.id.click_toNav})
+    @OnClick({R.id.click_msg, R.id.click_displayMenu,R.id.click_displayRoute})
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.click_msg:
@@ -121,8 +127,10 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
             case R.id.click_displayMenu:
                 displayMenuWindow();
                 break;
-            case R.id.click_toNav:
-                mMapPresenter.routeNavigator(mAMap, mStartPoint, mEndPoint);
+            case R.id.click_displayRoute:
+                NativeDialog msgDialog = new NativeDialog(this, new Location(mStartPoint.getLongitude(),mStartPoint.getLatitude(),"s"), new Location(mEndPoint.getLongitude(),mEndPoint.getLatitude(),"s"));
+                msgDialog.show();
+//                mMapPresenter.routeNavigator(mAMap, mStartPoint, mEndPoint);
                 break;
         }
     }
@@ -183,7 +191,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     public void onSuccessDriveRoute(DriveRouteResult result, int errorCode) {
         mAMap.clear();// 清理地图上的所有覆盖物
         if (errorCode == AMapException.CODE_AMAP_SUCCESS) {
-            DriveRouteResult mDriveRouteResult;
+            final DriveRouteResult mDriveRouteResult;
             if (result != null && result.getPaths() != null) {
                 if (result.getPaths().size() > 0) {
                     mDriveRouteResult = result;
@@ -204,18 +212,19 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
                     int taxiCost = (int) mDriveRouteResult.getTaxiCost();
                     toast("时间：" + des + " 费用：" + taxiCost);
 //                    mRouteDetailDes.setText("打车约" + taxiCost + "元");
-//                    mBottomLayout.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            Intent intent = new Intent(mContext,
-//                                    DriveRouteDetailActivity.class);
-//                            intent.putExtra("drive_path", drivePath);
-//                            intent.putExtra("drive_result",
-//                                    mDriveRouteResult);
-//                            startActivity(intent);
-//                        }
-//                    });
+                    click_toNav.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MapActivity.this,
+                                    DriveRouteDetailActivity.class);
+                            intent.putExtra("drive_path", drivePath);
+                            intent.putExtra("drive_result",
+                                    mDriveRouteResult);
+                            startActivity(intent);
+                        }
+                    });
                     displayTopNavType();
+
                 } else if (result != null && result.getPaths() == null) {
                     toast("无结果");
                 }

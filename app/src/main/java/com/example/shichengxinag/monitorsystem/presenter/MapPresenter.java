@@ -38,6 +38,7 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
     MyLocationStyle myLocationStyle;
     AMap mAMap;
     RouteSearch mRouteSearch;//线路导航
+    private LatLonPoint mStartPoint;
 
     public MapPresenter(MapView view) {
         super(view);
@@ -77,7 +78,7 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
     public void routeNavigator(AMap aMap, LatLonPoint startP, LatLonPoint endP) {
         mRouteSearch = new RouteSearch(mContext);
         mRouteSearch.setRouteSearchListener(this);
-        RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(startP, endP);
+        RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(mStartPoint, endP);
         RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo, RouteSearch.DRIVING_SINGLE_DEFAULT, null, null, "");
         mRouteSearch.calculateDriveRouteAsyn(query);
 
@@ -219,6 +220,7 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
     @Override
     public void onMyLocationChange(Location location) {
         mView.onError("定位经纬度：" + location.getLongitude() + "  " + location.getLatitude());
+        mStartPoint=new LatLonPoint(location.getLatitude(),location.getLongitude());
     }
 
     @Override
