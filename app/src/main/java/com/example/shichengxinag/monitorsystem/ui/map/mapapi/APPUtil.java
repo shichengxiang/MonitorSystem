@@ -52,7 +52,7 @@ public class APPUtil {
 		}
 		try {
 			Intent intent = new Intent("android.intent.action.VIEW",
-			Uri.parse("androidamap://navi?sourceApplication=水利局 &poiname="+loc.getAddress()+"&lat="+loc.getLat()+"&lon="+loc.getLng()+"&dev=1&style=2"));
+			Uri.parse("androidamap://navi?sourceApplication=amap&poiname="+loc.getAddress()+"&lat="+loc.getLat()+"&lon="+loc.getLng()+"&dev=1&style=0"));
 			intent.setPackage("com.autonavi.minimap");
 			context.startActivity(intent);
 		} catch (Exception e) {

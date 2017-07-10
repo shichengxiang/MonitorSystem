@@ -11,6 +11,10 @@
 	<color name="table_title_bg">#FF9F9C9C</color>
 	<color name="txt_color">#FF1A1919</color>
 	<color name="txt_color2">#FF2D2C2C</color>
+	<color name="txt_normal">#535353</color>
+	<color name="txt_black1">#404040</color>
+	<color name="txt_black2">#535353</color>
+	<color name="txt_gray">#7A7A7A</color>
 	<color name="gary">#898989</color>
 	<color name="gray_lite">#c5c5c5</color>
 	<color name="phone_bg">#f6f6f6</color>

@@ -60,8 +60,6 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     //    导航
     @BindView(R.id.area_bottom_positiondetail)
     View area_bottom_positiondetail;
-    @BindView(R.id.click_displayRoute)
-    View click_displayRoute;
     @BindView(R.id.click_toNav)
     View click_toNav;
     @BindView(R.id.area_topNavType)
@@ -118,7 +116,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
         mMapView.onResume();
     }
 
-    @OnClick({R.id.click_msg, R.id.click_displayMenu,R.id.click_displayRoute})
+    @OnClick({R.id.click_msg, R.id.click_displayMenu,R.id.click_toNav})
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.click_msg:
@@ -127,8 +125,9 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
             case R.id.click_displayMenu:
                 displayMenuWindow();
                 break;
-            case R.id.click_displayRoute:
-                NativeDialog msgDialog = new NativeDialog(this, new Location(mStartPoint.getLongitude(),mStartPoint.getLatitude(),"s"), new Location(mEndPoint.getLongitude(),mEndPoint.getLatitude(),"s"));
+            case R.id.click_toNav:
+//                AMapNavi.getInstance(this)showRouteActivity(context, new AmapNaviParams(null), IndexActivity.this);
+                NativeDialog msgDialog = new NativeDialog(this, new Location(mStartPoint.getLongitude(),mStartPoint.getLatitude(),"s"), new Location(mEndPoint.getLongitude(),mEndPoint.getLatitude(),"e"));
                 msgDialog.show();
 //                mMapPresenter.routeNavigator(mAMap, mStartPoint, mEndPoint);
                 break;
