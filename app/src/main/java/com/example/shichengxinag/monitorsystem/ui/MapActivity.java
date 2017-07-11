@@ -24,6 +24,7 @@ import com.arlib.floatingsearchview.FloatingSearchView;
 import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.presenter.MapPresenter;
+import com.example.shichengxinag.monitorsystem.ui.guardlog.GuardListActivity;
 import com.example.shichengxinag.monitorsystem.ui.map.AMapUtil;
 import com.example.shichengxinag.monitorsystem.ui.map.mapapi.Location;
 import com.example.shichengxinag.monitorsystem.ui.map.mapapi.NativeDialog;
@@ -176,7 +177,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
                 menuWindow.dismiss();
                 break;
             case R.id.click_toGuard:
-                startActivity(TableActivity.class);
+                startActivity(GuardListActivity.class);
                 menuWindow.dismiss();
                 break;
             case R.id.click_toLimit:
