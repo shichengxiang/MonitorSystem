@@ -11,7 +11,6 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import com.example.shichengxinag.monitorsystem.R;
-import com.umeng.message.PushAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -40,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         init(savedInstanceState);
     }
     private void initJPush(){
-        PushAgent.getInstance(this).onAppStart();//友盟统计
+//        PushAgent.getInstance(this).onAppStart();//友盟统计
 
     }
 

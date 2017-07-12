@@ -3,7 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
-
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     defaultConfig {
         applicationId "com.example.shichengxinag.monitorsystem"
         minSdkVersion 16
@@ -46,11 +50,12 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //图标
     compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
-    compile project(':PushSDK')
+//    compile project(':PushSDK')
     compile 'com.github.arimorty:floatingsearchview:2.0.3'
     //图片选择 拍照
     compile 'com.droidninja:filepicker:2.0.6'
     compile 'org.greenrobot:greendao:3.2.2'//数据库
+    compile 'com.orhanobut:logger:2.1.1'//log
 
 
 }

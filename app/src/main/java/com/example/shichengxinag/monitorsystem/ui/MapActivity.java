@@ -32,6 +32,7 @@ import com.example.shichengxinag.monitorsystem.ui.map.route.DriveRouteDetailActi
 import com.example.shichengxinag.monitorsystem.ui.map.route.DrivingRouteOverLay;
 import com.example.shichengxinag.monitorsystem.ui.notification.NewsActivity;
 import com.example.shichengxinag.monitorsystem.ui.tables.TableActivity;
+import com.example.shichengxinag.monitorsystem.utils.Log;
 
 import java.util.Arrays;
 import java.util.List;
@@ -122,9 +123,11 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
         switch (view.getId()) {
             case R.id.click_msg:
                 startActivity(NewsActivity.class);
+                Log.d("ceshi1");
                 break;
             case R.id.click_displayMenu:
                 displayMenuWindow();
+                Log.d("ceshi1");
                 break;
             case R.id.click_toNav:
 //                AMapNavi.getInstance(this)showRouteActivity(context, new AmapNaviParams(null), IndexActivity.this);

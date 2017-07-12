@@ -6,6 +6,6 @@ package com.example.shichengxinag.monitorsystem.utils;
 
 public class Log {
     public static void d(String msg){
-        android.util.Log.d("===",msg);
+        android.util.Log.e("===", "d: "+msg);
     }
 }
