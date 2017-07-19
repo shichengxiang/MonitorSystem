@@ -73,6 +73,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     private PopupWindow menuWindow;
     private MapPresenter mMapPresenter;
 
+
     @Override
     public int getLayout() {
         return R.layout.activity_map;

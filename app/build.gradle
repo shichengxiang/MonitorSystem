@@ -56,6 +56,7 @@ dependencies {
     compile 'com.droidninja:filepicker:2.0.6'
     compile 'org.greenrobot:greendao:3.2.2'//数据库
     compile 'com.orhanobut:logger:2.1.1'//log
+    compile 'com.qianwen:update-app:3.2.2' //升级
 
 
 }
