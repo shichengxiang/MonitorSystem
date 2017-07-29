@@ -1,35 +1,46 @@
 package com.example.shichengxinag.monitorsystem.presenter;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.os.Environment;
-import android.view.animation.LinearInterpolator;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.UiSettings;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.animation.AlphaAnimation;
 import com.amap.api.maps.model.animation.Animation;
-import com.amap.api.maps.model.animation.ScaleAnimation;
-import com.example.shichengxinag.monitorsystem.nets.x;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.route.BusRouteResult;
+import com.amap.api.services.route.DriveRouteResult;
+import com.amap.api.services.route.RideRouteResult;
+import com.amap.api.services.route.RouteSearch;
+import com.amap.api.services.route.WalkRouteResult;
+import com.example.shichengxinag.monitorsystem.R;
+import com.example.shichengxinag.monitorsystem.ui.MapActivity;
 import com.example.shichengxinag.monitorsystem.view.MapView;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.security.PublicKey;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by Administrator on 2017/6/17/017.
  */
 
-public class MapPresenter extends BasePresenter<MapView> {
+public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLocationChangeListener, AMap.OnInfoWindowClickListener, RouteSearch.OnRouteSearchListener {
 
     MyLocationStyle myLocationStyle;
     AMap mAMap;
+    RouteSearch mRouteSearch;//线路导航
+    private LatLonPoint mStartPoint;
 
     public MapPresenter(MapView view) {
         super(view);
@@ -48,6 +59,8 @@ public class MapPresenter extends BasePresenter<MapView> {
         aMap.getUiSettings().setMyLocationButtonEnabled(true);
         aMap.setMyLocationStyle(myLocationStyle);
         aMap.setMyLocationEnabled(true);
+        aMap.setOnMyLocationChangeListener(this);
+        aMap.setOnInfoWindowClickListener(this);
     }
 
     /**
@@ -62,6 +75,15 @@ public class MapPresenter extends BasePresenter<MapView> {
         settings.setScaleControlsEnabled(true);//缩放
 //        initScreeShot(aMap);
         addMarkers(aMap);
+    }
+
+    public void routeNavigator(AMap aMap, LatLonPoint startP, LatLonPoint endP) {
+        mRouteSearch = new RouteSearch(mContext);
+        mRouteSearch.setRouteSearchListener(this);
+        RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(mStartPoint, endP);
+        RouteSearch.DriveRouteQuery query = new RouteSearch.DriveRouteQuery(fromAndTo, RouteSearch.DRIVING_SINGLE_DEFAULT, null, null, "");
+        mRouteSearch.calculateDriveRouteAsyn(query);
+
     }
 
     /**
@@ -119,38 +141,85 @@ public class MapPresenter extends BasePresenter<MapView> {
     }
 
     public void addMarkers(AMap aMap) {
-        LatLng latLng = new LatLng(39.915168, 116.403875);
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng)
-                .title("天安门水库")
-                .snippet("水位：正常\n水量：100");
-        aMap.addMarker(markerOptions);
-        //test
-        LatLng l2 = new LatLng(31.035516, 112.199266);
-        MarkerOptions opt = new MarkerOptions();
-        opt.position(l2)
-                .title("荆门水库")
-                .snippet("水位：正常\n水量：100");
-        final Marker marker = aMap.addMarker(opt);
-        //动画
-        ScaleAnimation animation = new ScaleAnimation(0.8f,1f,0.8f,1.0f);
-        long duration = 1000L;
-        animation.setDuration(duration);
-        animation.setInterpolator(new LinearInterpolator());
+        ArrayList<MarkerOptions> list = new ArrayList<>();
+        for (float i = 0; i < 4; i++) {
+            MarkerOptions opt = new MarkerOptions();
+            opt.position(new LatLng(39.915168 - i / 1000f, 116.403875 - i / 100f))
+                    .title("第" + i + "水库")
+                    .snippet("水位：异常\n水量：异常");
+            list.add(opt);
+        }
+        list.get(0).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+                .decodeResource(mContext.getResources(), R.drawable.ic_alarm_red)));
+        list.get(1).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+                .decodeResource(mContext.getResources(), R.drawable.ic_alarm_orange)));
+        list.get(2).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+                .decodeResource(mContext.getResources(), R.drawable.ic_alarm_purple)));
+        list.get(3).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+                .decodeResource(mContext.getResources(), R.drawable.ic_alarm_green)));
+        ArrayList<Marker> markers = aMap.addMarkers(list, true);
+//        LatLng latLng3 = new LatLng(39.915168, 118.403875);
+//        MarkerOptions markerOptions3 = new MarkerOptions();
+//        markerOptions.position(latLng3)
+//                .icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+//                        .decodeResource(mContext.getResources(), R.drawable.ic_alarm_purple)))
+//                .title("天安门水库")
+//                .snippet("水位：正常\n水量：100");
+//        aMap.addMarker(markerOptions3);
+//        LatLng latLng4 = new LatLng(39.915168, 119.403875);
+//        MarkerOptions markerOptions4 = new MarkerOptions();
+//        markerOptions.position(latLng4)
+//                .icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+//                        .decodeResource(mContext.getResources(), R.drawable.ic_alarm_green)))
+//                .title("天安门水库")
+//                .snippet("水位：正常\n水量：100");
+//        aMap.addMarker(markerOptions4);
 
-        marker.setAnimation(animation);
-        marker.startAnimation();
-        marker.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart() {
+        final AlphaAnimation ani = new AlphaAnimation(1f, 0.1f);
+        ani.setDuration(400);
 
-            }
+        for (int i = 0; i < markers.size(); i++) {
+            final Marker marker = markers.get(i);
+            marker.setAnimation(ani);
+            marker.startAnimation();
+            marker.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart() {
 
-            @Override
-            public void onAnimationEnd() {
-                marker.startAnimation();
-            }
-        });
+                }
+
+                @Override
+                public void onAnimationEnd() {
+                   marker.startAnimation();
+                }
+            });
+//            ani.setAnimationListener(new Animation.AnimationListener() {
+//                @Override
+//                public void onAnimationStart() {
+//
+//                }
+//
+//                @Override
+//                public void onAnimationEnd() {
+//                    marker.setAnimation(ani2);
+//                    marker.startAnimation();
+//
+//                }
+//            });
+//            ani2.setAnimationListener(new Animation.AnimationListener() {
+//                @Override
+//                public void onAnimationStart() {
+//
+//                }
+//
+//                @Override
+//                public void onAnimationEnd() {
+//                    marker.setAnimation(ani);
+//                    marker.startAnimation();
+//                }
+//            });
+        }
+
         //自定义图标
         //点击事件
 //        aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
@@ -159,5 +228,42 @@ public class MapPresenter extends BasePresenter<MapView> {
 //                return false;
 //            }
 //        });
+    }
+
+    /**
+     * 获取定位经纬度
+     *
+     * @param location
+     */
+    @Override
+    public void onMyLocationChange(Location location) {
+        mView.onError("定位经纬度：" + location.getLongitude() + "  " + location.getLatitude());
+        mStartPoint = new LatLonPoint(location.getLatitude(), location.getLongitude());
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        mView.onError(marker.getSnippet());
+        mView.excuteMothed(MapActivity.DISPLAY_BOTTOM);
+    }
+
+    @Override
+    public void onBusRouteSearched(BusRouteResult busRouteResult, int i) {
+
+    }
+
+    @Override
+    public void onDriveRouteSearched(DriveRouteResult result, int errorCode) {
+        mView.onSuccessDriveRoute(result, errorCode);
+    }
+
+    @Override
+    public void onWalkRouteSearched(WalkRouteResult walkRouteResult, int i) {
+
+    }
+
+    @Override
+    public void onRideRouteSearched(RideRouteResult rideRouteResult, int i) {
+
     }
 }

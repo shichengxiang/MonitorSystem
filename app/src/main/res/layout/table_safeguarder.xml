@@ -1,20 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <HorizontalScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:orientation="horizontal">
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fillViewport="true"
+	android:orientation="horizontal">
 
-        </ListView>
-    </RelativeLayout>
+	<RelativeLayout
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:id="@+id/table_top"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:background="@color/gray_lite">
+
+			<TextView
+				android:id="@+id/col0"
+				style="@style/txt_table_content"
+				android:layout_width="@dimen/dp80"
+				android:layout_height="wrap_content"
+				android:text="站名"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/lineBG"/>
+
+			<TextView
+				android:id="@+id/col1"
+				style="@style/txt_table_content"
+				android:layout_width="@dimen/dp80"
+				android:layout_height="wrap_content"
+				android:text="测站编码"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/lineBG"/>
+
+			<TextView
+				android:id="@+id/col2"
+				style="@style/txt_table_content"
+				android:layout_width="@dimen/dp80"
+				android:layout_height="wrap_content"
+				android:text="日期/时间"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/lineBG"/>
+
+			<TextView
+				android:id="@+id/col3"
+				style="@style/txt_table_content"
+				android:layout_width="@dimen/dp80"
+				android:layout_height="wrap_content"
+				android:text="校前水位"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/lineBG"/>
+
+			<TextView
+				android:id="@+id/col4"
+				style="@style/txt_table_content"
+				android:layout_width="@dimen/dp80"
+				android:layout_height="wrap_content"
+				android:text="校核水位"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/lineBG"/>
+
+			<TextView
+				android:id="@+id/col5"
+				style="@style/txt_table_content"
+				android:layout_width="@dimen/dp80"
+				android:layout_height="wrap_content"
+				android:text="差值"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/lineBG"/>
+
+			<TextView
+				android:id="@+id/col6"
+				style="@style/txt_table_content"
+				android:layout_width="@dimen/dp80"
+				android:layout_height="wrap_content"
+				android:text="备注"/>
+
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/lineBG"/>
+
+			<TextView
+				android:id="@+id/col7"
+				style="@style/txt_table_content"
+				android:layout_width="@dimen/dp80"
+				android:layout_height="wrap_content"
+				android:text=""/>
+			<View
+				android:layout_width="1dp"
+				android:layout_height="match_parent"
+				android:background="@color/lineBG"/>
+		</LinearLayout>
+
+		<ListView
+			android:id="@+id/listView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_above="@+id/table_bottom"
+			android:layout_below="@id/table_top"
+			android:scrollbars="none">
+
+		</ListView>
+
+		<RelativeLayout
+			android:id="@+id/table_bottom"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="填报人员："
+				android:textColor="@color/txt_normal"
+				android:textSize="@dimen/dp14"/>
+		</RelativeLayout>
+	</RelativeLayout>
 
 </HorizontalScrollView>

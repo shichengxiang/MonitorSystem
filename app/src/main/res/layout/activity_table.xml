@@ -18,6 +18,29 @@
             android:text="人员信息"
             style="@style/txt_table_title"/>
     </android.support.v7.widget.Toolbar>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="填表单位："
+            android:textColor="@color/txt_normal"
+            android:textSize="@dimen/dp14"
+            android:padding="@dimen/dp15"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016 年 06 月 07日"
+            android:textColor="@color/txt_normal"
+            android:textSize="@dimen/dp14"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp15"/>
+    </RelativeLayout>
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/line_height"
+		android:background="@color/lineBG"/>
     <include
         layout="@layout/table_safeguarder"/>
 

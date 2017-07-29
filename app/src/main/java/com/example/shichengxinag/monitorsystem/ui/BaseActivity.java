@@ -33,13 +33,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        initJPush();
         ac=this;
         bind = ButterKnife.bind(this);
         init(savedInstanceState);
     }
+    private void initJPush(){
+//        PushAgent.getInstance(this).onAppStart();//友盟统计
+
+    }
 
     @Override
     protected void onDestroy() {
+
         super.onDestroy();
         bind.unbind();
         if (mLoadingDialog != null)
@@ -59,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }, 400);
     }
 
-    void displayLoading() {
+    public void displayLoading() {
         if (mLoadingDialog == null) {
             mLoadingDialog = new AlertDialog.Builder(this, R.style.DialogWrap)
                     .setView(R.layout.layout_loading)
@@ -72,7 +78,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             mLoadingDialog.show();
     }
 
-    void dismissLoading() {
+    public void dismissLoading() {
         if (mLoadingDialog != null)
             mLoadingDialog.dismiss();
     }
