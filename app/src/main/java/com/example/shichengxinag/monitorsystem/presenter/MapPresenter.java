@@ -56,11 +56,13 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
 //        myLocationStyle.interval(2000);//2s定位一次
         myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE);
         myLocationStyle.showMyLocation(true);
-        aMap.getUiSettings().setMyLocationButtonEnabled(true);
-        aMap.setMyLocationStyle(myLocationStyle);
-        aMap.setMyLocationEnabled(true);
-        aMap.setOnMyLocationChangeListener(this);
-        aMap.setOnInfoWindowClickListener(this);
+        if(aMap!=null){
+            aMap.getUiSettings().setMyLocationButtonEnabled(true);
+            aMap.setMyLocationStyle(myLocationStyle);
+            aMap.setMyLocationEnabled(true);
+            aMap.setOnMyLocationChangeListener(this);
+            aMap.setOnInfoWindowClickListener(this);
+        }
     }
 
     /**

@@ -39,14 +39,14 @@ public class LoginActivity extends BaseActivity implements AccountView {
     @Override
     public void init(Bundle savedInstanceState) {
         mPresenter = new AccountPresenter(this);
+        setTag();
     }
 
     @OnClick({R.id.toLogin,R.id.toMain})
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.toLogin:
-                setTag();
-//                startActivity(MapActivity.class);
+                startActivity(MapActivity.class);
                 break;
             case R.id.toMain:
                 startActivity(Main2Activity.class);
