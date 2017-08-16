@@ -39,7 +39,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         init(savedInstanceState);
     }
     private void initJPush(){
-//        PushAgent.getInstance(this).onAppStart();//友盟统计
+//        PushAgent.getInstance(this).onAppStart();//
 
     }
 
@@ -56,13 +56,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
-    <T> void startActivity(final Class<T> clz) {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(ac, clz));
-            }
-        }, 400);
+    void startActivity(Class clz) {
+        startActivity(new Intent(ac, clz));
     }
 
     public void displayLoading() {

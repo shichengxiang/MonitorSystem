@@ -45,8 +45,8 @@ public class LoginActivity extends BaseActivity implements AccountView {
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.toLogin:
-                setTag();
-//                startActivity(MapActivity.class);
+//                setTag();
+                startActivity(MapActivity.class);
                 break;
             case R.id.toMain:
                 startActivity(Main2Activity.class);

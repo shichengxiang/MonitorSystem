@@ -84,7 +84,7 @@ public class CenterActivity extends BaseActivity {
     }
 
     private void initGridView() {
-        String[] names = {"足迹", "日志", "考核", "日志", "考核", "日志", "考核", "日志", "考核"};
+        String[] names = {"足迹", "工作日志", "考核", "维护费用", "其他", "其他", "其他", "其他", "其他 "};
         int[] imgs = {R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round, R.mipmap.ic_launcher_round};
         List<Map<String, Object>> list = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
