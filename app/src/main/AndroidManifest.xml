@@ -48,7 +48,6 @@
 		<meta-data
 			android:name="com.amap.api.v2.apikey"
 			android:value="4942ba0b8b0572e8f32f3452b6c8db47">
-
 			<!-- 高德地图key -->
 		</meta-data>
 		<!-- 极光 -->

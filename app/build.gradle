@@ -54,9 +54,20 @@ dependencies {
     compile 'com.github.arimorty:floatingsearchview:2.0.3'
     //图片选择 拍照
     compile 'com.droidninja:filepicker:2.0.6'
+    //图片选择
+    compile 'com.jaikydota.imagespickers:imagespickers:1.0.6'
+    compile 'com.vincent.filepicker:MultiTypeFilePicker:1.0.4'
+
     compile 'org.greenrobot:greendao:3.2.2'//数据库
     compile 'com.orhanobut:logger:2.1.1'//log
     compile 'com.qianwen:update-app:3.2.2' //升级
+//
+//    //高德地图
+//    compile 'com.amap.api:3dmap:latest.integration'//3d
+//    compile 'com.amap.api:map2d:latest.integration'//2D地图
+//    compile 'com.amap.api:navi-3dmap:latest.integration'//导航
+//    compile 'com.amap.api:search:latest.integration'//搜索
+//    compile 'com.amap.api:location:latest.integration'//   定位
 
 
 }

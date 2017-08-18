@@ -3,7 +3,6 @@ package com.example.shichengxinag.monitorsystem.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -34,12 +33,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         initJPush();
-        ac=this;
+        ac = this;
         bind = ButterKnife.bind(this);
         init(savedInstanceState);
     }
-    private void initJPush(){
-//        PushAgent.getInstance(this).onAppStart();//
+
+    private void initJPush() {
+//        PushAgent.getInstance(this).onAppStart();//友盟统计
 
     }
 
