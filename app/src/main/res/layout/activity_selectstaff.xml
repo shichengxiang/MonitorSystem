@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/bg"
+	android:orientation="vertical">
+
+	<android.support.v7.widget.Toolbar
+		style="@style/MyToolBar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/colorPrimary"
+		android:fitsSystemWindows="true"
+		android:minHeight="?attr/actionBarSize">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<ImageView
+				android:id="@+id/iv_back"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:scaleType="fitCenter"
+				android:src="@mipmap/back"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerInParent="true"
+				android:text="选择人员"
+				android:textColor="@color/txt_title"
+				android:textSize="@dimen/dp16"/>
+
+			<TextView
+				android:id="@+id/click_selected"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_centerVertical="true"
+				android:padding="@dimen/dp10"
+				android:text="确定"
+				android:textColor="@color/txt_title"/>
+		</RelativeLayout>
+	</android.support.v7.widget.Toolbar>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/dp15"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="部门筛选："
+			android:textColor="@color/txt_black2"
+			android:textSize="@dimen/dp15"/>
+
+		<android.support.v7.widget.AppCompatSpinner
+			style="@style/txt_normalstyle"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/toolbar"
+			android:layout_weight="1"
+			android:entries="@array/guardArray"
+			android:spinnerMode="dropdown"/>
+
+		<TextView
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="部门筛选："
+			android:textColor="@color/txt_black2"
+			android:textSize="@dimen/dp15"/>
+
+		<android.support.v7.widget.AppCompatSpinner
+			style="@style/txt_normalstyle"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/toolbar"
+			android:layout_weight="1"
+			android:entries="@array/guardArray"
+			android:spinnerMode="dropdown">
+
+		</android.support.v7.widget.AppCompatSpinner>
+	</LinearLayout>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/recyclerview"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+	</android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

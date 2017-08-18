@@ -23,7 +23,7 @@
 				android:layout_height="wrap_content"
 				android:layout_centerInParent="true"
 				android:text="我的消息"
-				android:textColor="@color/white"
+				android:textColor="@color/txt_title"
 				android:textSize="@dimen/dp16"/>
 		</RelativeLayout>
 	</android.support.v7.widget.Toolbar>

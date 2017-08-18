@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/bg_solid_cannot_radius" android:state_enabled="false"/>
+    <item android:drawable="@drawable/bg_solid_gold_radius" android:state_pressed="true"/>
+    <!-- pressed -->
+    <item android:drawable="@drawable/bg_solid_orange"/>
+    <!-- default -->
+    <!-- <item><shape>
+            <solid android:color="@android:color/transparent" />
+
+            <stroke android:width="2dp" android:color="@color/gray" />
+        </shape></item> -->
+
+</selector>

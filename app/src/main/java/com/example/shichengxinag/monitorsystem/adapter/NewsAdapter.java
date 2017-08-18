@@ -3,12 +3,14 @@ package com.example.shichengxinag.monitorsystem.adapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.example.shichengxinag.monitorsystem.R;
+import com.example.shichengxinag.monitorsystem.ui.tables.SelectStaffActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +74,12 @@ public class NewsAdapter extends BaseAdapter {
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
+        holder.mView_toDispatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, SelectStaffActivity.class));
+            }
+        });
         ObjectAnimator animator = ObjectAnimator.ofFloat(holder.alarm, "alpha", 0.1f, 1);
         animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.setDuration(200);
@@ -81,6 +89,9 @@ public class NewsAdapter extends BaseAdapter {
     class ViewHolder{
         @BindView(R.id.alarmTag)
         View alarm;
+        @BindView(R.id.click_toDispatch)
+        View mView_toDispatch;
+
         public ViewHolder(View view){
             ButterKnife.bind(this,view);
         }
