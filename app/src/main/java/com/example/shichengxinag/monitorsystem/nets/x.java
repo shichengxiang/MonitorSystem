@@ -8,6 +8,8 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 /**
@@ -28,6 +30,8 @@ public class x {
 
     public interface Api {
         @GET("/account/first.htm")
-        Call<Result<String>> login(@QueryMap Map<String, String> params);
+        Call<Result<String>> login(@HeaderMap Map<String,String> heads,@QueryMap Map<String, String> params);//登录
+        @GET("/account/map.json")
+        Call<Result> index(@HeaderMap Map<String,String> heads, @QueryMap Map<String,String>  params);//首页
     }
 }

@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.ui.guardlog.GuardListActivity;
+import com.example.shichengxinag.monitorsystem.ui.tables.GuardTableActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/6/21/021.
@@ -100,5 +102,19 @@ public class CenterActivity extends BaseActivity {
                 startActivity(GuardListActivity.class);
             }
         });
+    }
+    @OnClick({R.id.back,R.id.rl_toGuardTable,R.id.rl_toPolling})
+    public void onClickEvent(View view){
+        switch (view.getId()){
+            case R.id.back:
+                finish();
+                break;
+            case R.id.rl_toGuardTable:
+                startActivity(GuardTableActivity.class);
+                break;
+            case R.id.rl_toPolling:
+                startActivity(GuardTableActivity.class);
+                break;
+        }
     }
 }

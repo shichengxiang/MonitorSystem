@@ -5,31 +5,35 @@ package com.example.shichengxinag.monitorsystem.entities;
  */
 
 public class Result<T> {
-    int code;
-    String result;
-    T message;
+    String code;
+    String msg;
+    T data;
 
-    public int getCode() {
+    public boolean isValid(){
+        return code!=null && code.equals("0");
+    }
+
+    public String getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public String getResult() {
-        return result;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public T getMessage() {
-        return message;
+    public T getData() {
+        return data;
     }
 
-    public void setMessage(T message) {
-        this.message = message;
+    public void setData(T data) {
+        this.data = data;
     }
 }

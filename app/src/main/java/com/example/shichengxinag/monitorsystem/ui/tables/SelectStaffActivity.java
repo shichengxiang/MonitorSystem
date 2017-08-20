@@ -18,6 +18,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.BindViews;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -66,6 +67,11 @@ public class SelectStaffActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
             if (position==0){
+                holder.cols[0].setTextColor(getResources().getColor(R.color.blue));
+                holder.cols[1].setTextColor(getResources().getColor(R.color.blue));
+                holder.cols[2].setTextColor(getResources().getColor(R.color.blue));
+                holder.cols[3].setTextColor(getResources().getColor(R.color.blue));
+                holder.cols[4].setTextColor(getResources().getColor(R.color.blue));
                 holder.cols[0].setText("部门");
                 holder.cols[1].setText("所属部门");
                 holder.cols[2].setText("职能");
@@ -73,6 +79,11 @@ public class SelectStaffActivity extends BaseActivity {
                 holder.cols[4].setText("状态");
                 holder.mTable_line.setEnabled(false);
             }else {
+                holder.cols[0].setTextColor(getResources().getColor(R.color.txt_normal));
+                holder.cols[1].setTextColor(getResources().getColor(R.color.txt_normal));
+                holder.cols[2].setTextColor(getResources().getColor(R.color.txt_normal));
+                holder.cols[3].setTextColor(getResources().getColor(R.color.txt_normal));
+                holder.cols[4].setTextColor(getResources().getColor(R.color.txt_normal));
                 holder.cols[0].setText("张"+position);
                 holder.cols[1].setText("荆门"+position);
                 holder.cols[2].setText("维护"+position);
@@ -101,6 +112,7 @@ public class SelectStaffActivity extends BaseActivity {
             TextView[] cols;
             public ViewHolder(View itemView) {
                 super(itemView);
+                ButterKnife.bind(this,itemView);
             }
         }
     }

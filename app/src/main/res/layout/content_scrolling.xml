@@ -19,6 +19,7 @@
             android:background="@color/white">
         </RelativeLayout>
         <RelativeLayout
+            android:id="@+id/rl_toGuardTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -49,6 +50,7 @@
             android:layout_height="@dimen/line_height"
             android:background="@color/lineBG"/>
         <RelativeLayout
+            android:id="@+id/rl_toPolling"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView

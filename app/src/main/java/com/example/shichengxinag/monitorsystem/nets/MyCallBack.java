@@ -7,5 +7,4 @@ import retrofit2.Callback;
  */
 
 public interface MyCallBack<T> extends Callback<T>{
-    void onNotConnected();
 }
