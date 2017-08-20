@@ -34,7 +34,7 @@ public class NewsActivity extends BaseActivity {
     private ListView mListView1,mListView2,mListView3;
     private NewsAdapter mAdapter1,mAdapter2,mAdapter3;
 
-    private String[] mTitles={"故障消息","派单消息","预警消息"};
+    private String[] mTitles={"一般通知","派单通知","派单通知"};
     @Override
     public int getLayout() {
         return R.layout.activity_news;
@@ -68,9 +68,9 @@ public class NewsActivity extends BaseActivity {
             mListView1= (ListView) mView1.findViewById(R.id.mListView);
             mListView2= (ListView) mView2.findViewById(R.id.mListView);
             mListView3= (ListView) mView3.findViewById(R.id.mListView);
-            mAdapter1=new NewsAdapter(context);
-            mAdapter2=new NewsAdapter(context);
-            mAdapter3=new NewsAdapter(context);
+            mAdapter1=new NewsAdapter(context,NewsAdapter.NEWSTYPE_GENERAL);
+            mAdapter2=new NewsAdapter(context,NewsAdapter.NEWSTYPE_FAULT);
+            mAdapter3=new NewsAdapter(context,NewsAdapter.NEWSTYPE_TASK);
             mListView1.setAdapter(mAdapter1);
             mListView2.setAdapter(mAdapter2);
             mListView3.setAdapter(mAdapter3);
