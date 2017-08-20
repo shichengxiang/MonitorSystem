@@ -280,4 +280,9 @@
 		<item name="android:textSize">14sp</item>
 	</style>
 
+	<style name="txt_normalstyle">
+		<item name="android:textColor">@color/txt_black2</item>
+		<item name="android:textSize">@dimen/dp14</item>
+	</style>
+
 </resources>

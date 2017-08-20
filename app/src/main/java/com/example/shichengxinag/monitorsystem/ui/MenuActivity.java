@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.customes.CircleLayout;
