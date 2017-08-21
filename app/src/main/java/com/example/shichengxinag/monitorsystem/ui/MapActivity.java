@@ -108,12 +108,6 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
 
             }
         });
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                displayMenuWindow();
-            }
-        },2000);
     }
 
     @Override
@@ -125,9 +119,15 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     protected void onResume() {
         super.onResume();
         mMapView.onResume();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                displayMenuWindow();
+            }
+        }, 2000);
     }
 
-    @OnClick({R.id.click_msg, R.id.click_displayMenu,R.id.click_toNav})
+    @OnClick({R.id.click_msg, R.id.click_displayMenu, R.id.click_toNav})
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.click_msg:
@@ -140,7 +140,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
                 break;
             case R.id.click_toNav:
 //                AMapNavi.getInstance(this)showRouteActivity(context, new AmapNaviParams(null), IndexActivity.this);
-                NativeDialog msgDialog = new NativeDialog(this, new Location(mStartPoint.getLongitude(),mStartPoint.getLatitude(),"s"), new Location(mEndPoint.getLongitude(),mEndPoint.getLatitude(),"e"));
+                NativeDialog msgDialog = new NativeDialog(this, new Location(mStartPoint.getLongitude(), mStartPoint.getLatitude(), "s"), new Location(mEndPoint.getLongitude(), mEndPoint.getLatitude(), "e"));
                 msgDialog.show();
 //                mMapPresenter.routeNavigator(mAMap, mStartPoint, mEndPoint);
                 break;
@@ -252,7 +252,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     @Override
     public void excuteMothed(int tag) {
         if (tag == DISPLAY_BOTTOM) {
-        }else if(tag==GOTONAV ){
+        } else if (tag == GOTONAV) {
             click_toNav.performClick();
         }
     }

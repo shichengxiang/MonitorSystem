@@ -34,7 +34,7 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:fitsSystemWindows="true"
-                    android:src="@mipmap/img"/>
+                    android:src="@mipmap/img_centertop"/>
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_head"
                     android:layout_width="@dimen/dp100"

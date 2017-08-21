@@ -1,73 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical"
-	xmlns:app="http://schemas.android.com/apk/res-auto">
-	<android.support.v7.widget.Toolbar
-		android:id="@+id/toolbar"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:minHeight="?attr/actionBarSize"
-		android:background="@color/colorPrimary"
-		android:fitsSystemWindows="true"
-		style="@style/MyToolBar">
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:text="维护日志"
-			android:gravity="center"
-			android:textColor="@color/txt_black2"
-			android:padding="@dimen/dp5"
-			android:textSize="@dimen/dp16"/>
-	</android.support.v7.widget.Toolbar>
-	<android.support.v7.widget.AppCompatSpinner
-		android:id="@+id/spinnerLog"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_below="@id/toolbar"
-		android:entries="@array/guardArray"
-		android:padding="@dimen/dp15"
-		android:spinnerMode="dialog">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-	</android.support.v7.widget.AppCompatSpinner>
-	<ScrollView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_below="@id/spinnerLog">
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical">
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:orientation="horizontal">
-				<Button
-					android:id="@+id/click_toScreenShot"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="截屏"/>
-				<Button
-					android:id="@+id/click_toCamera"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="拍照"/>
-			</LinearLayout>
-		</LinearLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/MyToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize">
 
-	</ScrollView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-	<android.support.design.widget.FloatingActionButton
-		android:id="@+id/click_upload"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_alignParentRight="true"
-		android:layout_marginBottom="@dimen/dp15"
-		android:layout_marginRight="@dimen/dp15"
-		app:rippleColor="@color/background"
-		android:src="@drawable/ic_upload"/>
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp10"
+                android:padding="@dimen/dp5"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/dp5"
+                android:text="运行维护"
+                android:textColor="@color/txt_black2"
+                android:textSize="@dimen/dp16" />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/ll_tableTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:background="@color/table_title_bg"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dp10"
+            android:text="测站号"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp15" />
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dp10"
+            android:text="名称"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp15" />
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dp10"
+            android:text="维护人"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp15" />
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dp10"
+            android:text="进度"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp15" />
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dp10"
+            android:text="详情"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp15" />
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG" />
+
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerviewGuardLog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_tableTitle">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/click_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        android:src="@drawable/ic_upload"
+        app:rippleColor="@color/background" />
 
 </RelativeLayout>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
 
 	<LinearLayout
 		android:id="@+id/table_line"
@@ -19,11 +20,14 @@
 		<TextView
 			android:id="@+id/t_col1"
 			android:layout_width="0dp"
-			android:layout_height="match_parent"
+			android:layout_height="wrap_content"
 			android:layout_weight="1"
 			android:gravity="center"
+			android:layout_gravity="center"
 			android:textColor="@color/txt_normal"
 			android:textSize="@dimen/dp13"
+			android:paddingTop="@dimen/dp15"
+			android:paddingBottom="@dimen/dp15"
 			tools:text="部门"/>
 
 		<View
@@ -91,5 +95,9 @@
 			android:layout_height="match_parent"
 			android:background="@color/lineBG"/>
 	</LinearLayout>
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/line_height"
+		android:background="@color/lineBG"/>
 
-</FrameLayout>
+</LinearLayout>

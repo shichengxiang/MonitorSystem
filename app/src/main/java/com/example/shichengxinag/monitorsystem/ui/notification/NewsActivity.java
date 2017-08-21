@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by shichengxinag on 2017/7/6.
@@ -55,6 +56,14 @@ public class NewsActivity extends BaseActivity {
         mAdapter2.refresh(Arrays.asList("1","","","","",""));
         mAdapter3.refresh(Arrays.asList("1","","","","",""));
 
+    }
+    @OnClick({R.id.back})
+    public void onClickEvent(View view){
+        switch (view.getId()){
+            case R.id.back:
+                finish();
+                break;
+        }
     }
 
     private class NewsPageAdapter extends PagerAdapter {

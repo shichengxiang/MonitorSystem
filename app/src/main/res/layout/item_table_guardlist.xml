@@ -13,7 +13,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
             android:textSize="@dimen/dp14"
             android:padding="@dimen/dp10"
             android:textColor="@color/txt_normal"
@@ -28,7 +27,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
             android:textSize="@dimen/dp14"
             android:padding="@dimen/dp10"
             android:textColor="@color/txt_normal"
@@ -43,7 +41,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
             android:textSize="@dimen/dp14"
             android:padding="@dimen/dp10"
             android:textColor="@color/txt_normal"
@@ -83,18 +80,23 @@
             android:layout_width="@dimen/line_height"
             android:layout_height="match_parent"
             android:background="@color/lineBG"/>
-        <TextView
-            android:id="@+id/col6"
+        <RelativeLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/app_name"
-            android:textSize="@dimen/dp14"
-            android:padding="@dimen/dp10"
-            android:textColor="@color/txt_normal"
-            android:gravity="center"
-            android:layout_gravity="center_vertical"/>
-
+            android:gravity="center">
+            <TextView
+                android:id="@+id/col6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp14"
+                android:padding="@dimen/dp10"
+                android:textColor="@color/white"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:layout_centerInParent="true"
+                android:text="派发"
+                android:background="@drawable/selector_button"/>
+        </RelativeLayout>
     </LinearLayout>
     <View
         android:layout_width="match_parent"

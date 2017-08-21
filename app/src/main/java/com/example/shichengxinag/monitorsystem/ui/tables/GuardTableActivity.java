@@ -93,6 +93,12 @@ public class GuardTableActivity extends BaseActivity {
                 holder.cols[3].setTextColor(getResources().getColor(R.color.txt_normal));
                 holder.cols[4].setTextColor(getResources().getColor(R.color.txt_normal));
                 holder.cols[5].setTextColor(getResources().getColor(R.color.txt_normal));
+                holder.cols[0].setText((position-1)+"");
+                holder.cols[1].setText("chuyu63343941"+position);
+                holder.cols[2].setText("荆门");
+                holder.cols[3].setText("荆门具体地址");
+                holder.cols[4].setText("");
+//                holder.cols[5].setText("");
             }
         }
 

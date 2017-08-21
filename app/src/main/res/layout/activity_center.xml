@@ -35,12 +35,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/img"/>
-                <ImageView
+                    android:src="@mipmap/img_centertop"/>
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_head"
-                    android:layout_width="@dimen/dp100"
-                    android:layout_height="@dimen/dp100"
-                    android:src="@mipmap/iv_head"
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="@dimen/dp80"
+                    android:src="@mipmap/ic_head"
                     android:layout_centerInParent="true"/>
             </RelativeLayout>
 

@@ -1,99 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@color/bg"
-	android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
 
-	<android.support.v7.widget.Toolbar
-		style="@style/MyToolBar"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:background="@color/colorPrimary"
-		android:fitsSystemWindows="true"
-		android:minHeight="?attr/actionBarSize">
+    <android.support.v7.widget.Toolbar
+        style="@style/MyToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize">
 
-		<RelativeLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-			<ImageView
-				android:id="@+id/iv_back"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_centerVertical="true"
-				android:scaleType="fitCenter"
-				android:src="@mipmap/back"/>
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/back" />
 
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_centerInParent="true"
-				android:text="选择人员"
-				android:textColor="@color/txt_title"
-				android:textSize="@dimen/dp16"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="选择人员"
+                android:textColor="@color/txt_title"
+                android:textSize="@dimen/dp16" />
 
-			<TextView
-				android:id="@+id/click_selected"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_alignParentRight="true"
-				android:layout_centerVertical="true"
-				android:padding="@dimen/dp10"
-				android:text="确定"
-				android:textColor="@color/txt_title"/>
-		</RelativeLayout>
-	</android.support.v7.widget.Toolbar>
+            <TextView
+                android:id="@+id/click_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/dp10"
+                android:text="确定"
+                android:textColor="@color/txt_title" />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_margin="@dimen/dp15"
-		android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp15"
+        android:orientation="horizontal">
 
-		<TextView
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:text="部门筛选："
-			android:textColor="@color/txt_black2"
-			android:textSize="@dimen/dp15"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="筛选："
+            android:textColor="@color/txt_black2"
+            android:textSize="@dimen/dp15" />
 
-		<android.support.v7.widget.AppCompatSpinner
-			style="@style/txt_normalstyle"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_below="@id/toolbar"
-			android:layout_weight="1"
-			android:entries="@array/guardArray"
-			android:spinnerMode="dropdown"/>
+        <android.support.v7.widget.AppCompatSpinner
+            style="@style/txt_normalstyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_weight="1"
+            android:entries="@array/guardArray"
+            android:spinnerMode="dropdown"
+            app:theme="@style/AlertDialog.AppCompat.Light" />
 
-		<TextView
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_weight="1"
-			android:text="部门筛选："
-			android:textColor="@color/txt_black2"
-			android:textSize="@dimen/dp15"/>
+        <android.support.v7.widget.AppCompatSpinner
+            style="@style/txt_normalstyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_weight="1"
+            android:entries="@array/guardArray"
+            android:spinnerMode="dropdown">
 
-		<android.support.v7.widget.AppCompatSpinner
-			style="@style/txt_normalstyle"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			android:layout_below="@id/toolbar"
-			android:layout_weight="1"
-			android:entries="@array/guardArray"
-			android:spinnerMode="dropdown">
+        </android.support.v7.widget.AppCompatSpinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/table_title_bg">
 
-		</android.support.v7.widget.AppCompatSpinner>
-	</LinearLayout>
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG"/>
 
-	<android.support.v7.widget.RecyclerView
-		android:id="@+id/recyclerview"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/t_col1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp13"
+            android:paddingTop="@dimen/dp15"
+            android:paddingBottom="@dimen/dp15"
+            android:text="姓名"/>
 
-	</android.support.v7.widget.RecyclerView>
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG"/>
+
+        <TextView
+            android:id="@+id/t_col2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp13"
+            android:text="部门"/>
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG"/>
+
+        <TextView
+            android:id="@+id/t_col3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp13"
+            android:text="职能"/>
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG"/>
+
+        <TextView
+            android:id="@+id/t_col4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp13"
+            android:text="联系方式"/>
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG"/>
+
+        <TextView
+            android:id="@+id/t_col5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/dp13"
+            android:text="状态"/>
+
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:background="@color/lineBG"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>

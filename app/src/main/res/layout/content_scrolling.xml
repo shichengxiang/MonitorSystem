@@ -15,19 +15,48 @@
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp100"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:background="@color/white">
+            <TextView
+                android:id="@+id/tv_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="张三"
+                android:textColor="@color/txt_black2"
+                android:textSize="@dimen/dp15"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp20"/>
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="职能：维修负责人"
+                android:textColor="@color/txt_normal"
+                android:layout_below="@id/tv_userName"
+                android:textSize="@dimen/dp14"
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginLeft="@dimen/dp20"
+                android:layout_marginBottom="@dimen/dp20"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/arrow_right_blue"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp20"/>
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/rl_toGuardTable"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp5">
             <ImageView
                 android:id="@+id/iv_line1tag"
                 android:layout_width="@dimen/dp30"
                 android:layout_height="@dimen/dp30"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/poi_marker_pressed"
+                android:src="@mipmap/ic_guardicon"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/dp15"/>
             <TextView
@@ -48,17 +77,20 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/line_height"
-            android:background="@color/lineBG"/>
+            android:background="@color/lineBG"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"/>
         <RelativeLayout
             android:id="@+id/rl_toPolling"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp5">
             <ImageView
                 android:id="@+id/iv_line2tag"
                 android:layout_width="@dimen/dp30"
                 android:layout_height="@dimen/dp30"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/poi_marker_pressed"
+                android:src="@mipmap/ic_pollingicon"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/dp15"/>
             <TextView
@@ -87,7 +119,8 @@
             android:numColumns="3"
             android:horizontalSpacing="@dimen/dp1"
             android:verticalSpacing="@dimen/dp1"
-            android:background="@color/lineBG">
+            android:background="@color/lineBG"
+            android:visibility="gone">
 
         </GridView>
         <View
