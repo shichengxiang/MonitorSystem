@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcel;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -48,6 +49,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
 
     private static boolean isMark = true;
     public static final int DISPLAY_BOTTOM = 0x11;
+    public static final int GOTONAV = 0x12;
 
 
     @BindView(R.id.mapView)
@@ -106,6 +108,12 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
 
             }
         });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                displayMenuWindow();
+            }
+        },2000);
     }
 
     @Override
@@ -159,7 +167,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
             view.findViewById(R.id.click_toCenter).setOnClickListener(this);
             view.findViewById(R.id.click_toGuard).setOnClickListener(this);
             view.findViewById(R.id.click_toLimit).setOnClickListener(this);
-            menuWindow.setOutsideTouchable(true);
+            menuWindow.setOutsideTouchable(false);
             menuWindow.setAnimationStyle(R.style.popwindow_anim_left);
         }
         if (!menuWindow.isShowing())
@@ -244,7 +252,8 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
     @Override
     public void excuteMothed(int tag) {
         if (tag == DISPLAY_BOTTOM) {
-            displayBottomPositionDetail();
+        }else if(tag==GOTONAV ){
+            click_toNav.performClick();
         }
     }
 

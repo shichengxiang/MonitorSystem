@@ -35,7 +35,8 @@
 		app:floatingSearch_searchHint="搜索"
 		app:floatingSearch_searchSuggestionTextSize="@dimen/dp14"
 		app:floatingSearch_showSearchKey="false"
-		app:floatingSearch_suggestionsListAnimDuration="250"/>
+		app:floatingSearch_suggestionsListAnimDuration="250"
+		android:visibility="gone"/>
 
 	<RelativeLayout
 		android:id="@+id/click_msg"
@@ -77,7 +78,8 @@
 		android:text="更多"
 		android:padding="@dimen/dp5"
 		android:textColor="@color/white"
-		android:textSize="@dimen/dp10"/>
+		android:textSize="@dimen/dp10"
+		android:visibility="gone"/>
 	<!-- 点击弹出底部详情 -->
 	<RelativeLayout
 		android:id="@+id/area_bottom_positiondetail"

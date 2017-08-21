@@ -2,8 +2,6 @@ package com.example.shichengxinag.monitorsystem;
 
 import android.app.Application;
 
-import com.example.shichengxinag.monitorsystem.utils.Log;
-
 import cn.jpush.android.api.JPushInterface;
 
 /**
@@ -18,10 +16,8 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
 //        Logger.addLogAdapter(new AndroidLogAdapter());
-        Log.d("注册推送");
-        JPushInterface.setDebugMode(true);
+        JPushInterface.setDebugMode(false);
         JPushInterface.init(this);
-        Log.d("推送完成");
 
     }
 }

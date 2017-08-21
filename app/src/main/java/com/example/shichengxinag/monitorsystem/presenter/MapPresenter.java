@@ -1,9 +1,13 @@
 package com.example.shichengxinag.monitorsystem.presenter;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Environment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.UiSettings;
@@ -22,6 +26,7 @@ import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkRouteResult;
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.ui.MapActivity;
+import com.example.shichengxinag.monitorsystem.ui.tables.SelectStaffActivity;
 import com.example.shichengxinag.monitorsystem.view.MapView;
 
 import java.io.FileNotFoundException;
@@ -141,8 +146,41 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
             }
         });
     }
+    public class MyInfoWindowAdapter implements AMap.InfoWindowAdapter{
+        View infoWindow=null;
+
+        @Override
+        public View getInfoWindow(Marker marker) {
+            if(infoWindow==null){
+                infoWindow= LayoutInflater.from(mContext).inflate(R.layout.layout_infowindow,null);
+            }
+            TextView tv_state= (TextView) infoWindow.findViewById(R.id.tv_state);
+            TextView tv_dispatch= (TextView) infoWindow.findViewById(R.id.tv_dispatch);
+            View mV_toNav=infoWindow.findViewById(R.id.tv_toNav);
+            tv_dispatch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mContext.startActivity(new Intent(mContext, SelectStaffActivity.class));
+                }
+            });
+            mV_toNav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mView.excuteMothed(MapActivity.GOTONAV);
+                }
+            });
+
+            return infoWindow;
+        }
+
+        @Override
+        public View getInfoContents(Marker marker) {
+            return null;
+        }
+    }
 
     public void addMarkers(AMap aMap) {
+        aMap.setInfoWindowAdapter(new MyInfoWindowAdapter());
         ArrayList<MarkerOptions> list = new ArrayList<>();
         for (float i = 0; i < 4; i++) {
             MarkerOptions opt = new MarkerOptions();
@@ -246,7 +284,7 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
     @Override
     public void onInfoWindowClick(Marker marker) {
         mView.onError(marker.getSnippet());
-        mView.excuteMothed(MapActivity.DISPLAY_BOTTOM);
+//        mView.excuteMothed(MapActivity.DISPLAY_BOTTOM);
     }
 
     @Override

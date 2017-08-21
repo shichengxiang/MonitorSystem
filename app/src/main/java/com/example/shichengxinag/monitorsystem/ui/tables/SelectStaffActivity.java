@@ -120,7 +120,7 @@ public class SelectStaffActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.iv_back,R.id.table_line})
+    @OnClick({R.id.iv_back,R.id.click_selected})
     public void onClickEvent(View view){
         switch (view.getId()){
             case R.id.iv_back:

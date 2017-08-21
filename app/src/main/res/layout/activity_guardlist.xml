@@ -18,7 +18,7 @@
 			android:layout_height="wrap_content"
 			android:text="维护日志"
 			android:gravity="center"
-			android:textColor="@color/txt_title"
+			android:textColor="@color/txt_black2"
 			android:padding="@dimen/dp5"
 			android:textSize="@dimen/dp16"/>
 	</android.support.v7.widget.Toolbar>
