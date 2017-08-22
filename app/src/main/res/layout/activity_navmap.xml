@@ -5,10 +5,18 @@
 	android:layout_height="match_parent"
 	android:orientation="vertical">
 
-	<com.amap.api.maps.MapView
-		android:id="@+id/mapView"
+	<WebView
+		android:id="@+id/webView"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:visibility="gone">
+	</WebView>
+
+	<com.amap.api.navi.AMapNaviView
+		android:id="@+id/amapNaviView"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-	</com.amap.api.maps.MapView>
+	</com.amap.api.navi.AMapNaviView>
+
 </LinearLayout>

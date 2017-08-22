@@ -184,19 +184,21 @@ public class MapPresenter extends BasePresenter<MapView> implements AMap.OnMyLoc
         ArrayList<MarkerOptions> list = new ArrayList<>();
         for (float i = 0; i < 4; i++) {
             MarkerOptions opt = new MarkerOptions();
-            opt.position(new LatLng(39.915168 - i / 1000f, 116.403875 - i / 100f))
-                    .title("第" + i + "水库")
-                    .snippet("水位：异常\n水量：异常");
+            opt.position(new LatLng(39.992929 - i / 1000f, 116.337626 - i / 100f))
+//                    .title("第" + i + "水库")
+//                    .snippet("水位：异常\n水量：异常")
+                    .icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+                    .decodeResource(mContext.getResources(), R.mipmap.ic_locred)));
             list.add(opt);
         }
         list.get(0).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
-                .decodeResource(mContext.getResources(), R.drawable.ic_alarm_red)));
+                .decodeResource(mContext.getResources(), R.mipmap.ic_locgreen)));
         list.get(1).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
-                .decodeResource(mContext.getResources(), R.drawable.ic_alarm_orange)));
+                .decodeResource(mContext.getResources(), R.mipmap.ic_locgreen)));
         list.get(2).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
-                .decodeResource(mContext.getResources(), R.drawable.ic_alarm_purple)));
+                .decodeResource(mContext.getResources(), R.mipmap.ic_locred)));
         list.get(3).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
-                .decodeResource(mContext.getResources(), R.drawable.ic_alarm_green)));
+                .decodeResource(mContext.getResources(), R.mipmap.ic_locred)));
         ArrayList<Marker> markers = aMap.addMarkers(list, true);
 //        LatLng latLng3 = new LatLng(39.915168, 118.403875);
 //        MarkerOptions markerOptions3 = new MarkerOptions();

@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.example.shichengxinag.monitorsystem.R;
+import com.example.shichengxinag.monitorsystem.customes.NoScrollViewPager;
 import com.example.shichengxinag.monitorsystem.fragment.GuardFragment;
 import com.example.shichengxinag.monitorsystem.fragment.MapFragent;
 import com.example.shichengxinag.monitorsystem.fragment.MineFrament;
@@ -17,16 +18,13 @@ import com.example.shichengxinag.monitorsystem.fragment.SearchFrament;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * Created by Administrator on 2017/6/27/027.
  */
 
 public class Main2Activity extends FragmentActivity {
     BottomBar mBottomBar;
-    ViewPager mViewPager;
+    NoScrollViewPager mViewPager;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +33,9 @@ public class Main2Activity extends FragmentActivity {
     }
     private void initTab(){
         mBottomBar= (BottomBar) findViewById(R.id.nav);
-        mViewPager= (ViewPager) findViewById(R.id.viewPager);
+        mViewPager= (NoScrollViewPager) findViewById(R.id.viewPager);
         mViewPager.setAdapter(new TabFragmentsAdapter(getSupportFragmentManager()));
+        mViewPager.setNoScroll(true);
         mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {

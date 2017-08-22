@@ -52,7 +52,7 @@ public class LoginActivity extends BaseActivity implements AccountView {
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case R.id.toLogin:
-                startActivity(MapActivity.class);
+                startActivity(Main2Activity.class);
                 break;
             case R.id.toMain:
                 startActivity(Main2Activity.class);

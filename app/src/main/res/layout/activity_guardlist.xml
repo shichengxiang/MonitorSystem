@@ -59,7 +59,7 @@
             android:gravity="center"
             android:padding="@dimen/dp10"
             android:text="测站号"
-            android:textColor="@color/blue"
+            android:textColor="@color/txt_black2"
             android:textSize="@dimen/dp15" />
 
         <View
@@ -75,7 +75,7 @@
             android:gravity="center"
             android:padding="@dimen/dp10"
             android:text="名称"
-            android:textColor="@color/blue"
+            android:textColor="@color/txt_black2"
             android:textSize="@dimen/dp15" />
 
         <View
@@ -91,7 +91,7 @@
             android:gravity="center"
             android:padding="@dimen/dp10"
             android:text="维护人"
-            android:textColor="@color/blue"
+            android:textColor="@color/txt_black2"
             android:textSize="@dimen/dp15" />
 
         <View
@@ -107,7 +107,7 @@
             android:gravity="center"
             android:padding="@dimen/dp10"
             android:text="进度"
-            android:textColor="@color/blue"
+            android:textColor="@color/txt_black2"
             android:textSize="@dimen/dp15" />
 
         <View
@@ -123,7 +123,7 @@
             android:gravity="center"
             android:padding="@dimen/dp10"
             android:text="详情"
-            android:textColor="@color/blue"
+            android:textColor="@color/txt_black2"
             android:textSize="@dimen/dp15" />
 
         <View

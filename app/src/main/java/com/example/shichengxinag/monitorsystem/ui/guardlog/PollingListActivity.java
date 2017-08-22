@@ -1,6 +1,5 @@
 package com.example.shichengxinag.monitorsystem.ui.guardlog;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,32 +22,25 @@ import butterknife.OnClick;
 import cn.refactor.lib.colordialog.ColorDialog;
 
 /**
- * Created by shichengxinag on 2017/7/7.
+ * Created by shichengxinag on 2017/8/22.
  */
 
-public class GuardListActivity extends BaseActivity {
-
-
-    @BindView(R.id.recyclerviewGuardLog)
-    RecyclerView mRecyclerViewGuardList;
-    GuardListAdapter mAdapter;
-
+public class PollingListActivity extends BaseActivity {
+    @BindView(R.id.recyclerviewPollingList)
+    RecyclerView mRecyclerViewPollingList;
+    PollingListAdapter mPollingListAdapter;
 
     @Override
     public int getLayout() {
-        return R.layout.activity_guardlist;
+        return R.layout.activity_pollinglist;
     }
 
     @Override
     public void init(Bundle savedInstanceState) {
-        initView();
-    }
-
-    private void initView() {
-        mAdapter=new GuardListAdapter();
-        mRecyclerViewGuardList.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerViewGuardList.setAdapter(mAdapter);
-        mAdapter.refresh(Arrays.asList("","","","","","","","","","",""));
+        mPollingListAdapter=new PollingListAdapter();
+        mRecyclerViewPollingList.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerViewPollingList.setAdapter(mPollingListAdapter);
+        mPollingListAdapter.refresh(Arrays.asList("","","","","","","","","","","","","","","","",""));
     }
 
     @OnClick({R.id.back})
@@ -60,32 +52,31 @@ public class GuardListActivity extends BaseActivity {
         }
     }
 
+    class PollingListAdapter extends RecyclerView.Adapter<PollingListAdapter.ViewHolder> {
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    }
+        List<String> mData = new ArrayList<>();
 
-
-    class GuardListAdapter extends RecyclerView.Adapter<GuardListAdapter.ViewHolder>{
-
-        List<String> mData=new ArrayList<>();
-        public void refresh(List<String> list){
-            if(list==null)
+        public void refresh(List<String> list) {
+            if (list == null)
                 mData.clear();
             else
-                mData=list;
+                mData = list;
             notifyDataSetChanged();
         }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view= LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_guardlist,parent,false);
+            View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_guardlist, parent, false);
             return new ViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.cols[0].setText("");
+            holder.cols[0].setText("zb456789"+position);
+            holder.cols[1].setText("楚禹"+"");
+            holder.cols[2].setText("张三"+"");
+            holder.cols[3].setText("巡检中"+"");
+//            holder.cols[4].setText(position+"");
         }
 
         @Override
@@ -93,11 +84,11 @@ public class GuardListActivity extends BaseActivity {
             return mData.size();
         }
 
-        class ViewHolder extends RecyclerView.ViewHolder{
+        class ViewHolder extends RecyclerView.ViewHolder {
 
             @OnClick({R.id.fl_displayDetail})
-            public void onClick(View view){
-                ColorDialog dialog = new ColorDialog(GuardListActivity.this);
+            public void onClick(View view) {
+                ColorDialog dialog = new ColorDialog(PollingListActivity.this);
                 dialog.setTitle("维护进度");
                 dialog.setContentText("已完成");
                 dialog.setPositiveListener("确认", new ColorDialog.OnPositiveListener() {
@@ -107,13 +98,12 @@ public class GuardListActivity extends BaseActivity {
                     }
                 }).show();
             }
-            @BindView(R.id.fl_displayDetail)
-            View mV_displayDetail;
-            @BindViews({R.id.t_col1,R.id.t_col2,R.id.t_col3,R.id.t_col4})
+            @BindViews({R.id.t_col1, R.id.t_col2, R.id.t_col3, R.id.t_col4})
             TextView[] cols;
+
             public ViewHolder(View itemView) {
                 super(itemView);
-                ButterKnife.bind(this,itemView);
+                ButterKnife.bind(this, itemView);
             }
         }
     }

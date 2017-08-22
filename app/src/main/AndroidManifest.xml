@@ -96,11 +96,8 @@
 
 		</activity>
 		<activity android:name=".ui.guardlog.GuardListActivity">
-			<!--<intent-filter>-->
-			<!--<action android:name="android.intent.action.MAIN"/>-->
-
-			<!--<category android:name="android.intent.category.LAUNCHER"/>-->
-			<!--</intent-filter>-->
+		</activity>
+		<activity android:name=".ui.guardlog.PollingListActivity">
 		</activity>
 		<activity android:name=".ui.map.staff.StaffActivity">
 		</activity>
@@ -111,6 +108,16 @@
 		</activity>
 		<activity
 			android:name=".ui.tables.GuardTableActivity"
+			android:screenOrientation="portrait">
+
+		</activity>
+		<activity
+			android:name=".ui.tables.PollingTableActivity"
+			android:screenOrientation="portrait">
+
+		</activity>
+		<activity
+			android:name=".ui.map.NavigationActivity"
 			android:screenOrientation="portrait">
 
 		</activity>

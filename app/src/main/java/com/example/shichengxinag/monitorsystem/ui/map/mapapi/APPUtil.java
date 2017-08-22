@@ -39,7 +39,7 @@ public class APPUtil {
 			context.startActivity(intent);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Toast.makeText(context, "��ַ��������", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "开启地图导航失败", Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -57,7 +57,7 @@ public class APPUtil {
 			context.startActivity(intent);
 		} catch (Exception e) {
 			e.printStackTrace();
-			Toast.makeText(context, "��ַ��������", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "开启地图导航失败", Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -117,10 +117,10 @@ public class APPUtil {
 			return null;
 		}
 		if (loc1.getAddress()==null || "".equals(loc1.getAddress())) {
-			loc1.setAddress("�ҵ�λ��");
+			loc1.setAddress("我的位置");
 		}
 		if (loc2.getAddress()==null || "".equals(loc2.getAddress())) {
-			loc2.setAddress("Ŀ�ĵ�");
+			loc2.setAddress("目的地");
 		}
 		                                                                 	 		//http://api.map.baidu.com/direction?origin=latlng:34.264642646862,108.95108518068|name:�Ҽ�&destination=������&mode=driving&region=����&output=html&src=yourCompanyName|yourAppName
 		return "http://api.map.baidu.com/direction?origin=latlng:"+loc1.getStringLatLng()+"|name:"+loc1.getAddress()+"&destination=latlng:"+loc2.getStringLatLng()+"|name:"+loc2.getAddress()+"&mode=driving&src=������׿Ƽ�|CC����-����";

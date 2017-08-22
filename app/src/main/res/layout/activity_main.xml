@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.v4.view.ViewPager
+    <com.example.shichengxinag.monitorsystem.customes.NoScrollViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/nav">
 
-    </android.support.v4.view.ViewPager>
+    </com.example.shichengxinag.monitorsystem.customes.NoScrollViewPager>
     <com.roughike.bottombar.BottomBar
         android:id="@+id/nav"
         android:layout_width="match_parent"

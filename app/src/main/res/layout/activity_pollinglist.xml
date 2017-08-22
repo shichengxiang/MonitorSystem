@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="维护单"
+                android:text="定期巡检"
                 android:textColor="@color/titleBlack"
                 android:padding="@dimen/dp15"
                 android:layout_centerInParent="true"/>
@@ -99,7 +99,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="@dimen/dp10"
-            android:text="地址"
+            android:text="巡检人"
             android:textColor="@color/txt_black2"
             android:textSize="@dimen/dp15" />
 
@@ -115,7 +115,22 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="@dimen/dp10"
-            android:text="状态"
+            android:text="进度"
+            android:textColor="@color/txt_black2"
+            android:textSize="@dimen/dp15" />
+        <View
+            android:layout_width="@dimen/line_height"
+            android:layout_height="match_parent"
+            android:background="@color/lineBG" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/dp10"
+            android:text="详情"
             android:textColor="@color/txt_black2"
             android:textSize="@dimen/dp15" />
 
@@ -127,7 +142,7 @@
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/guardListView"
+        android:id="@+id/recyclerviewPollingList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

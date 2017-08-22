@@ -26,13 +26,13 @@ import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.presenter.MapPresenter;
 import com.example.shichengxinag.monitorsystem.ui.guardlog.GuardListActivity;
+import com.example.shichengxinag.monitorsystem.ui.guardlog.PollingListActivity;
 import com.example.shichengxinag.monitorsystem.ui.map.AMapUtil;
 import com.example.shichengxinag.monitorsystem.ui.map.mapapi.Location;
 import com.example.shichengxinag.monitorsystem.ui.map.mapapi.NativeDialog;
 import com.example.shichengxinag.monitorsystem.ui.map.route.DriveRouteDetailActivity;
 import com.example.shichengxinag.monitorsystem.ui.map.route.DrivingRouteOverLay;
 import com.example.shichengxinag.monitorsystem.ui.notification.NewsActivity;
-import com.example.shichengxinag.monitorsystem.ui.tables.TableActivity;
 import com.example.shichengxinag.monitorsystem.utils.Log;
 
 import java.util.Arrays;
@@ -139,6 +139,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
                 Log.d("ceshi1");
                 break;
             case R.id.click_toNav:
+//                startActivity(NavigationActivity.class);
 //                AMapNavi.getInstance(this)showRouteActivity(context, new AmapNaviParams(null), IndexActivity.this);
                 NativeDialog msgDialog = new NativeDialog(this, new Location(mStartPoint.getLongitude(), mStartPoint.getLatitude(), "s"), new Location(mEndPoint.getLongitude(), mEndPoint.getLatitude(), "e"));
                 msgDialog.show();
@@ -193,7 +194,7 @@ public class MapActivity extends BaseActivity implements com.example.shichengxin
                 menuWindow.dismiss();
                 break;
             case R.id.click_toLimit:
-                startActivity(TableActivity.class);
+                startActivity(PollingListActivity.class);
                 menuWindow.dismiss();
                 break;
         }

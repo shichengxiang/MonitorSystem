@@ -13,6 +13,7 @@ import android.widget.SimpleAdapter;
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.ui.guardlog.GuardListActivity;
 import com.example.shichengxinag.monitorsystem.ui.tables.GuardTableActivity;
+import com.example.shichengxinag.monitorsystem.ui.tables.PollingTableActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,7 +114,7 @@ public class CenterActivity extends BaseActivity {
                 startActivity(GuardTableActivity.class);
                 break;
             case R.id.rl_toPolling:
-                startActivity(GuardTableActivity.class);
+                startActivity(PollingTableActivity.class);
                 break;
         }
     }

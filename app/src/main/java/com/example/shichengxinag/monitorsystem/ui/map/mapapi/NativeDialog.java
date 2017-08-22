@@ -2,6 +2,8 @@ package com.example.shichengxinag.monitorsystem.ui.map.mapapi;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils.TruncateAt;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -214,10 +216,10 @@ public class NativeDialog extends Dialog {
         	//不推建使用这种方式，浏览器兼容问题比较严重，比如qq浏览器会封杀百度的此功能。
         	//注释掉这里段代码，取消上面第一种方式的注释可以启用第一种方式
         	//###########################################
-        	//String url = APPUtil.getWebUrl_Baidu(loc_now, loc_end);
-        	//Intent intent = new Intent(Intent.ACTION_VIEW);
-        	//intent.setData(Uri.parse(url));
-        	//context.startActivity(intent);
+        	String url = APPUtil.getWebUrl_Baidu(loc_now, loc_end);
+        	Intent intent = new Intent(Intent.ACTION_VIEW);
+        	intent.setData(Uri.parse(url));
+        	context.startActivity(intent);
         	//###########################################
         	
         	

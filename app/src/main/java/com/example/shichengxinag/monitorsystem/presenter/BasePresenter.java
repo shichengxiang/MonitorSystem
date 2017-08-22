@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.Fragment;
 
 /**
  * Created by Administrator on 2017/6/17/017.
@@ -17,6 +18,9 @@ public abstract class BasePresenter<T> {
         this.mView = view;
         if (view instanceof Activity)
             mContext = (Activity) view;
+        else if (view instanceof Fragment) {
+            mContext = ((Fragment) view).getActivity();
+        }
     }
 
     public void onDestory() {

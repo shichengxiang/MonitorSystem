@@ -32,4 +32,8 @@ public class U {
         }
         return 0;
     }
+
+    public static String getMapUrl(){
+        return "";
+    }
 }

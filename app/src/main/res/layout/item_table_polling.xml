@@ -15,7 +15,7 @@
             android:background="@color/lineBG" />
 
         <TextView
-            android:id="@+id/t_col1"
+            android:id="@+id/col1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,7 +33,7 @@
             android:background="@color/lineBG" />
 
         <TextView
-            android:id="@+id/t_col2"
+            android:id="@+id/col2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -49,7 +49,7 @@
             android:background="@color/lineBG" />
 
         <TextView
-            android:id="@+id/t_col3"
+            android:id="@+id/col3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -65,7 +65,7 @@
             android:background="@color/lineBG" />
 
         <TextView
-            android:id="@+id/t_col4"
+            android:id="@+id/col4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -89,7 +89,7 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/t_col5"
+                android:id="@+id/col5"
                 android:layout_width="@dimen/dp15"
                 android:layout_height="@dimen/dp15"
                 android:layout_gravity="center"
