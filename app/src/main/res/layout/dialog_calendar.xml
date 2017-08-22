@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
+        android:layout_centerInParent="true"
+        android:dateTextAppearance="@style/text_nomal_red"
+        android:weekDayTextAppearance="@style/text_nomal_red"
+        app:theme="@style/Theme.Design.Light">
+
+    </CalendarView>
+
+
+</RelativeLayout>

@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs>
-	<tab
-		id="@+id/tab_map"
-		icon="@drawable/ic_map"
-		title="地图" />
-	<tab
-		id="@+id/tab_guard"
-		icon="@drawable/ic_guard"
-		title="巡检中心" />
-	<tab
-		id="@+id/tab_search"
-		icon="@drawable/ic_search"
-		title="查询中心" />
-	<tab
-		id="@+id/tab_mine"
-		icon="@drawable/ic_me"
-		title="我的" />
+    <tab
+        icon="@drawable/ic_map"
+        id="@+id/tab_map"
+        title="首页"/>
+    <tab
+        icon="@drawable/ic_guard"
+        id="@+id/tab_guard"
+        title="通知"/>
+    <tab
+        icon="@drawable/ic_search"
+        id="@+id/tab_search"
+        title="运维"/>
+    <tab
+        icon="@drawable/ic_me"
+        id="@+id/tab_mine"
+        title="巡检"/>
+    <tab
+        icon="@drawable/ic_me"
+        id="@+id/tab_log"
+        title="日志"/>
 </tabs>

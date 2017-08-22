@@ -1,9 +1,5 @@
 [
     {
-        "merged": "E:\\WDJDownload\\MonitorSystem\\PushSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\upush_notification.xml",
-        "source": "E:\\WDJDownload\\MonitorSystem\\PushSDK\\build\\intermediates\\bundles\\debug\\res\\layout\\upush_notification.xml"
-    },
-    {
         "merged": "F:\\Androidproject\\MonitorSystem\\PushSDK\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\upush_notification.xml",
         "source": "F:\\Androidproject\\MonitorSystem\\PushSDK\\build\\intermediates\\bundles\\debug\\res\\layout\\upush_notification.xml"
     }

@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import com.example.shichengxinag.monitorsystem.R;
 import com.example.shichengxinag.monitorsystem.customes.NoScrollViewPager;
 import com.example.shichengxinag.monitorsystem.fragment.GuardFragment;
+import com.example.shichengxinag.monitorsystem.fragment.LogFragment;
 import com.example.shichengxinag.monitorsystem.fragment.MapFragent;
 import com.example.shichengxinag.monitorsystem.fragment.MineFrament;
 import com.example.shichengxinag.monitorsystem.fragment.SearchFrament;
@@ -25,17 +26,20 @@ import com.roughike.bottombar.OnTabSelectListener;
 public class Main2Activity extends FragmentActivity {
     BottomBar mBottomBar;
     NoScrollViewPager mViewPager;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initTab();
     }
-    private void initTab(){
-        mBottomBar= (BottomBar) findViewById(R.id.nav);
-        mViewPager= (NoScrollViewPager) findViewById(R.id.viewPager);
+
+    private void initTab() {
+        mBottomBar = (BottomBar) findViewById(R.id.nav);
+        mViewPager = (NoScrollViewPager) findViewById(R.id.viewPager);
         mViewPager.setAdapter(new TabFragmentsAdapter(getSupportFragmentManager()));
         mViewPager.setNoScroll(true);
+        mViewPager.setOffscreenPageLimit(1);
         mBottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
@@ -60,6 +64,7 @@ public class Main2Activity extends FragmentActivity {
         });
         mViewPager.setOffscreenPageLimit(0);
     }
+
     class TabFragmentsAdapter extends FragmentPagerAdapter {
 
         public TabFragmentsAdapter(FragmentManager fm) {
@@ -71,16 +76,19 @@ public class Main2Activity extends FragmentActivity {
             Fragment fragment = null;
             switch (position) {
                 case 1:
-                    fragment=new GuardFragment();
+                    fragment = new GuardFragment();
                     break;
                 case 2:
-                    fragment=new SearchFrament();
+                    fragment = new SearchFrament();
                     break;
                 case 3:
-                    fragment=new MineFrament();
+                    fragment = new MineFrament();
+                    break;
+                case 4:
+                    fragment = LogFragment.newInstance();
                     break;
                 default:
-                    fragment=new MapFragent();
+                    fragment = MapFragent.newInstance();
                     break;
             }
             return fragment;
@@ -88,32 +96,38 @@ public class Main2Activity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 5;
         }
     }
-    private int getIdByPosition(int p){
-        int result=0;
-        if(p==0){
-            result=R.id.tab_map;
-        }else if(p==1){
-            result=R.id.tab_guard;
-        }else if(p==2){
-            result=R.id.tab_search;
-        }else {
-            result =R.id.tab_mine;
+
+    private int getIdByPosition(int p) {
+        int result = 0;
+        if (p == 0) {
+            result = R.id.tab_map;
+        } else if (p == 1) {
+            result = R.id.tab_guard;
+        } else if (p == 2) {
+            result = R.id.tab_search;
+        } else if (p == 3) {
+            result = R.id.tab_mine;
+        } else {
+            result = R.id.tab_log;
         }
         return result;
     }
-    private int getPositionById(int id){
-        int position=0;
-        if (id==R.id.tab_map){
-            position=0;
-        }else if(id==R.id.tab_guard){
-            position=1;
-        }else if(id==R.id.tab_search){
-            position=2;
-        }else{
-            position=3;
+
+    private int getPositionById(int id) {
+        int position = 0;
+        if (id == R.id.tab_map) {
+            position = 0;
+        } else if (id == R.id.tab_guard) {
+            position = 1;
+        } else if (id == R.id.tab_search) {
+            position = 2;
+        } else if (id == R.id.tab_mine) {
+            position = 3;
+        } else {
+            position = 4;
         }
         return position;
     }
